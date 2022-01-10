@@ -1,0 +1,8 @@
+C:\Users\Usuario\OneDrive\Desktop\Facultad\Laboratorio II\source\repos\gimnasio\Gimnasio\obj\Debug\net5.0\Gimnasio.csproj.AssemblyReference.cache
+C:\Users\Usuario\OneDrive\Desktop\Facultad\Laboratorio II\source\repos\gimnasio\Gimnasio\obj\Debug\net5.0\Gimnasio.Gimnasio.Properties.Resources.resources
+C:\Users\Usuario\OneDrive\Desktop\Facultad\Laboratorio II\source\repos\gimnasio\Gimnasio\obj\Debug\net5.0\Gimnasio.Form1.resources
+C:\Users\Usuario\OneDrive\Desktop\Facultad\Laboratorio II\source\repos\gimnasio\Gimnasio\obj\Debug\net5.0\Gimnasio.csproj.GenerateResource.cache
+C:\Users\Usuario\OneDrive\Desktop\Facultad\Laboratorio II\source\repos\gimnasio\Gimnasio\obj\Debug\net5.0\Gimnasio.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Usuario\OneDrive\Desktop\Facultad\Laboratorio II\source\repos\gimnasio\Gimnasio\obj\Debug\net5.0\Gimnasio.AssemblyInfoInputs.cache
+C:\Users\Usuario\OneDrive\Desktop\Facultad\Laboratorio II\source\repos\gimnasio\Gimnasio\obj\Debug\net5.0\Gimnasio.AssemblyInfo.cs
+C:\Users\Usuario\OneDrive\Desktop\Facultad\Laboratorio II\source\repos\gimnasio\Gimnasio\obj\Debug\net5.0\Gimnasio.csproj.CoreCompileInputs.cache
