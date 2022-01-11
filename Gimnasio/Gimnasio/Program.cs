@@ -17,9 +17,6 @@ namespace Gimnasio
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
-            Gimnasio.Model.ConfigDB db = new Model.ConfigDB();
-
-
         }
     }
 }

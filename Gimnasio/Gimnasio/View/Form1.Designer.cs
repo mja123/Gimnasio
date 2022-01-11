@@ -37,6 +37,7 @@ namespace Gimnasio
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.btnLogIn = new System.Windows.Forms.Button();
             this.btnLogUp = new System.Windows.Forms.Button();
+            this.lblLogUp = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -95,6 +96,7 @@ namespace Gimnasio
             this.btnLogIn.TabIndex = 5;
             this.btnLogIn.Text = "Ingresar";
             this.btnLogIn.UseVisualStyleBackColor = true;
+            this.btnLogIn.Click += new System.EventHandler(this.btnLogIn_Click);
             // 
             // btnLogUp
             // 
@@ -104,12 +106,23 @@ namespace Gimnasio
             this.btnLogUp.TabIndex = 6;
             this.btnLogUp.Text = "Registrarse";
             this.btnLogUp.UseVisualStyleBackColor = true;
+            this.btnLogUp.Click += new System.EventHandler(this.btnLogUp_Click);
+            // 
+            // lblLogUp
+            // 
+            this.lblLogUp.AutoSize = true;
+            this.lblLogUp.Location = new System.Drawing.Point(184, 266);
+            this.lblLogUp.Name = "lblLogUp";
+            this.lblLogUp.Size = new System.Drawing.Size(49, 13);
+            this.lblLogUp.TabIndex = 7;
+            this.lblLogUp.Text = "lblLogUp";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(310, 286);
+            this.Controls.Add(this.lblLogUp);
             this.Controls.Add(this.btnLogUp);
             this.Controls.Add(this.btnLogIn);
             this.Controls.Add(this.txtPassword);
@@ -118,7 +131,7 @@ namespace Gimnasio
             this.Controls.Add(this.lblUsername);
             this.Controls.Add(this.lblTitle);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Log";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -134,6 +147,7 @@ namespace Gimnasio
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Button btnLogIn;
         private System.Windows.Forms.Button btnLogUp;
+        private System.Windows.Forms.Label lblLogUp;
     }
 }
 

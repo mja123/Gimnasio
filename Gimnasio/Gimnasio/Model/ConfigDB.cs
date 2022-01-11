@@ -7,22 +7,9 @@ using System.Threading.Tasks;
 
 namespace Gimnasio.Model
 {
-    class ConfigDB
+    static class ConfigDB
     {
-        private MySqlConnection mySql = new MySqlConnection("Server=localhost; Database=gym_uda; Uid=root; Pwd=159123456asd");
-        
-        public ConfigDB()
-        {
-            try
-            {
-                mySql.Open();
-                Console.WriteLine("Opened correctly");
-            } catch (Exception e)
-            {
-                Console.WriteLine("Error openning" + e.Message);
-            }
-        }
-
-
+       static private MySqlConnection mySql = new MySqlConnection("Server=localhost; Database=gym_uda; Uid=root; Pwd=159123456asd");
+       static public MySqlConnection MySql { get => mySql; }
     }
 }

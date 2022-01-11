@@ -4,10 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Gimnasio.Presenter
+namespace Gimnasio.Presenter.LogIn
 {
-    interface IView
+    class LogInManage
     {
+        ILog log;
+        public LogInManage(ILog log)
+        {
 
+        }
     }
 }
