@@ -9,7 +9,9 @@ namespace Gimnasio.Presenter
     interface ILog
     {
         string[] dataUser();
-        string createdUser();
+        void createdUser(string result);
+
+        void getUser(string result);
         
 
     }

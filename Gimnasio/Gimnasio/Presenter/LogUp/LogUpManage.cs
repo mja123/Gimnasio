@@ -16,14 +16,11 @@ namespace Gimnasio.Presenter.LogUp
             usersModel = new Model.UsersModel();
         }
 
-        public string createUser()
+        public void createUser()
         {
-           string result = usersModel.createUser(this.log.dataUser());
-            return result;
 
+                string result = usersModel.createUser(this.log.dataUser());
+                log.createdUser(result);
         }
-
-
-
     }
 }

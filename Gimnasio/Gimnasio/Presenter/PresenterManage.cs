@@ -22,10 +22,13 @@ namespace Gimnasio.Presenter
         {
             if (newUser)
             {
-                LogIn.LogInManage logInManager = new LogIn.LogInManage(log);
+                LogUp.LogUpManage logUpManager = new LogUp.LogUpManage(log);
+                logUpManager.createUser();
             } else
             {
-                LogUp.LogUpManage logUpManager = new LogUp.LogUpManage(log);
+
+                LogIn.LogInManage logInManager = new LogIn.LogInManage(log);
+                logInManager.logInUser();
             }
 
         }

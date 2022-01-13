@@ -38,6 +38,7 @@ namespace Gimnasio
             this.btnLogIn = new System.Windows.Forms.Button();
             this.btnLogUp = new System.Windows.Forms.Button();
             this.lblLogUp = new System.Windows.Forms.Label();
+            this.lblLogIn = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -111,17 +112,25 @@ namespace Gimnasio
             // lblLogUp
             // 
             this.lblLogUp.AutoSize = true;
-            this.lblLogUp.Location = new System.Drawing.Point(184, 266);
+            this.lblLogUp.Location = new System.Drawing.Point(184, 264);
             this.lblLogUp.Name = "lblLogUp";
-            this.lblLogUp.Size = new System.Drawing.Size(49, 13);
+            this.lblLogUp.Size = new System.Drawing.Size(0, 13);
             this.lblLogUp.TabIndex = 7;
-            this.lblLogUp.Text = "lblLogUp";
+            // 
+            // lblLogIn
+            // 
+            this.lblLogIn.AutoSize = true;
+            this.lblLogIn.Location = new System.Drawing.Point(47, 266);
+            this.lblLogIn.Name = "lblLogIn";
+            this.lblLogIn.Size = new System.Drawing.Size(0, 13);
+            this.lblLogIn.TabIndex = 8;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(310, 286);
+            this.ClientSize = new System.Drawing.Size(344, 286);
+            this.Controls.Add(this.lblLogIn);
             this.Controls.Add(this.lblLogUp);
             this.Controls.Add(this.btnLogUp);
             this.Controls.Add(this.btnLogIn);
@@ -148,6 +157,7 @@ namespace Gimnasio
         private System.Windows.Forms.Button btnLogIn;
         private System.Windows.Forms.Button btnLogUp;
         private System.Windows.Forms.Label lblLogUp;
+        private System.Windows.Forms.Label lblLogIn;
     }
 }
 

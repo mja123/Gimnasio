@@ -35,11 +35,17 @@ namespace Gimnasio
             string[] userInformation = new string[2];
             userInformation[0] = txtUsername.Text;
             userInformation[1] = txtPassword.Text;
+            Console.WriteLine(userInformation[0]);
+            Console.WriteLine(userInformation[1]);
             return userInformation;
         }
-        string ILog.createdUser()
+        void ILog.createdUser(string result)
         {
-            return lblLogUp.Text;
+            lblLogUp.Text = result;
+        }
+        void ILog.getUser(string result)
+        {
+            lblLogIn.Text = result;
         }
     }
 }
