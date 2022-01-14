@@ -60,27 +60,27 @@ namespace Gimnasio
             // lblUsername
             // 
             this.lblUsername.AutoSize = true;
-            this.lblUsername.Location = new System.Drawing.Point(47, 69);
+            this.lblUsername.Location = new System.Drawing.Point(47, 65);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(90, 13);
+            this.lblUsername.Size = new System.Drawing.Size(43, 13);
             this.lblUsername.TabIndex = 1;
-            this.lblUsername.Text = "Ingrese el usuario";
+            this.lblUsername.Text = "Usuario";
             // 
             // lblPassword
             // 
             this.lblPassword.AutoSize = true;
             this.lblPassword.Location = new System.Drawing.Point(47, 146);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(229, 13);
+            this.lblPassword.Size = new System.Drawing.Size(61, 13);
             this.lblPassword.TabIndex = 2;
-            this.lblPassword.Text = "Ingrese la contraseña (sólo números, mínimo 4)";
+            this.lblPassword.Text = "Contraseña";
             // 
             // txtUsername
             // 
             this.txtUsername.Location = new System.Drawing.Point(50, 101);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(138, 20);
-            this.txtUsername.TabIndex = 3;
+            this.txtUsername.TabIndex = 3;          
             // 
             // txtPassword
             // 

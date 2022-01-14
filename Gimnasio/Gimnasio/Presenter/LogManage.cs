@@ -10,7 +10,9 @@ namespace Gimnasio.Presenter
     {
         ILog log;
         private bool newUser;
+        private string[] userData;
         private Model.UsersModel userModel;
+
 
         public LogManage(ILog log, bool newUser)
         {
@@ -34,15 +36,30 @@ namespace Gimnasio.Presenter
         }
         public void createUser()
         {
+            string[] userData = this.log.dataUser();
+            if ((userData[0].Length & userData[1].Length) < 3)
+            {
+                log.createdUser(406);
+            } else
+            {
+                int result = userModel.createUser(this.log.dataUser());
+                log.createdUser(result);
+            }
 
-            int result = userModel.createUser(this.log.dataUser());
-            log.createdUser(result);
+            
         }
         public void logInUser()
         {
-            int result = userModel.getUser(this.log.dataUser());
-            log.getUser(result);
-
+            string[] userData = this.log.dataUser();
+            if ((userData[0].Length & userData[1].Length) < 3)
+            {
+                log.createdUser(406);
+            }
+            else
+            {
+                int result = userModel.getUser(this.log.dataUser());
+                log.getUser(result);
+            }
         }
     }
 }

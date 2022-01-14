@@ -42,25 +42,41 @@ namespace Gimnasio
         }
         void ILog.createdUser(int result)
         {
-            if (result == 409)
+            switch (result)
             {
-                MessageBox.Show("Error al crear el usuario. Intente nuevamente", "Logup", MessageBoxButtons.OK);
-            } else
-            {
-                MessageBox.Show("Usuario creado correctamente!", "Logup", MessageBoxButtons.OK);
+                case 201:
+                    MessageBox.Show("Usuario creado correctamente!", "Logup", MessageBoxButtons.OK);
+                    break;
+                case 400:
+                    MessageBox.Show("Usuario no disponible", "Logup", MessageBoxButtons.OK);
+                    break;
+                case 406:
+                    MessageBox.Show("El usuario y la contraseña deben tener más de 3 caracteres", "Logun", MessageBoxButtons.OK);
+                    break;
+                default:
+                    MessageBox.Show("Error al crear el usuario. Intente nuevamente", "Logup", MessageBoxButtons.OK);
+                    break;
             }
             
         }
         void ILog.getUser(int result)
         {
-            if (result == 200)
+            switch(result)
             {
-                turns = new View.frmTurns();
-                this.Hide();
-                turns.Show();
-            } else
-            {
-                MessageBox.Show("Usuario no encontrado", "Login", MessageBoxButtons.OK);
+                case 200:
+                    turns = new View.frmTurns();
+                    this.Hide();
+                    turns.Show();
+                    break;
+                case 400:
+                    MessageBox.Show("Usuario no encontrado", "Login", MessageBoxButtons.OK);
+                    break;
+                case 406:
+                    MessageBox.Show("El usuario y la contraseña deben tener más de 3 caracteres", "Login", MessageBoxButtons.OK);
+                    break;
+                default:
+                    MessageBox.Show("Error en el sistema", "Login", MessageBoxButtons.OK);
+                    break;
             }
         }
     }

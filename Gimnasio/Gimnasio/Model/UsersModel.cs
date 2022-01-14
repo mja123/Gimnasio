@@ -20,18 +20,25 @@ namespace Gimnasio.Model
 
         public int createUser(string[] userData)
         {
-             
+
             try
             {
-                db.Open();
+                if (this.getUser(userData) == 400)
+                {
+                    Console.WriteLine("here");
+                    db.Open();
+                    Console.WriteLine("Opened");
 
-                Console.WriteLine("Opened");
-                MySqlCommand mySqlCommand = new MySqlCommand("INSERT INTO gym_uda.users(username, password) VALUES('" + userData[0] + "', '" + userData[1] + "') ", db);
-                MySqlDataAdapter mySqlDataAdapter = new MySqlDataAdapter();
-                mySqlDataAdapter.SelectCommand = mySqlCommand;
+                    MySqlCommand mySqlCommand = new MySqlCommand("INSERT INTO gym_uda.users(username, password) VALUES('" + userData[0] + "', '" + userData[1] + "') ", db);
 
-                statusCode = 201;
-                return statusCode;
+                    statusCode = 201;
+                    return statusCode;
+                } else
+                {
+                    return 400;
+                }
+
+               
             } catch (Exception e)
             {
                 Console.WriteLine(e.Message);
@@ -47,12 +54,9 @@ namespace Gimnasio.Model
                 db.Open();
                 Console.WriteLine("Opened");
 
-                MySqlCommand mySqlCommand = new MySqlCommand("SELECT user_id FROM users WHERE username ='"+ userData[0] + "'AND password ='" + userData[1] + "' ", db);
-                MySqlDataAdapter mySqlDataAdapter = new MySqlDataAdapter(); 
-                mySqlDataAdapter.SelectCommand = mySqlCommand;
+                MySqlCommand mySqlCommand = new MySqlCommand("SELECT user_id FROM users WHERE username ='"+ userData[0] + "'AND password ='" + userData[1] + "' ", db);      
                 result = Convert.ToInt32(mySqlCommand.ExecuteScalar());
-
-                Console.WriteLine(result + " Here");
+                Console.WriteLine(result);
                 if(result != 0)
                 {
                     statusCode = 200;                  
