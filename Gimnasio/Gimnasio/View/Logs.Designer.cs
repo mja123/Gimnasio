@@ -1,7 +1,7 @@
 ﻿
 namespace Gimnasio
 {
-    partial class Form1
+    partial class frmLog
     {
         /// <summary>
         /// Variable del diseñador necesaria.
@@ -88,6 +88,7 @@ namespace Gimnasio
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(138, 20);
             this.txtPassword.TabIndex = 4;
+            this.txtPassword.UseSystemPasswordChar = true;
             // 
             // btnLogIn
             // 
@@ -125,11 +126,11 @@ namespace Gimnasio
             this.lblLogIn.Size = new System.Drawing.Size(0, 13);
             this.lblLogIn.TabIndex = 8;
             // 
-            // Form1
+            // frmLog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(344, 286);
+            this.ClientSize = new System.Drawing.Size(304, 286);
             this.Controls.Add(this.lblLogIn);
             this.Controls.Add(this.lblLogUp);
             this.Controls.Add(this.btnLogUp);
@@ -139,7 +140,7 @@ namespace Gimnasio
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.lblUsername);
             this.Controls.Add(this.lblTitle);
-            this.Name = "Form1";
+            this.Name = "frmLog";
             this.Text = "Log";
             this.ResumeLayout(false);
             this.PerformLayout();

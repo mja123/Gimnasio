@@ -3,7 +3,6 @@ C:\Users\Usuario\OneDrive\Desktop\Facultad\Laboratorio II\source\repos\gimnasio\
 C:\Users\Usuario\OneDrive\Desktop\Facultad\Laboratorio II\source\repos\gimnasio\Gimnasio\Gimnasio\bin\Debug\Gimnasio.pdb
 C:\Users\Usuario\OneDrive\Desktop\Facultad\Laboratorio II\source\repos\gimnasio\Gimnasio\Gimnasio\obj\Debug\Gimnasio.csproj.AssemblyReference.cache
 C:\Users\Usuario\OneDrive\Desktop\Facultad\Laboratorio II\source\repos\gimnasio\Gimnasio\Gimnasio\obj\Debug\Gimnasio.Properties.Resources.resources
-C:\Users\Usuario\OneDrive\Desktop\Facultad\Laboratorio II\source\repos\gimnasio\Gimnasio\Gimnasio\obj\Debug\Gimnasio.Form1.resources
 C:\Users\Usuario\OneDrive\Desktop\Facultad\Laboratorio II\source\repos\gimnasio\Gimnasio\Gimnasio\obj\Debug\Gimnasio.csproj.GenerateResource.cache
 C:\Users\Usuario\OneDrive\Desktop\Facultad\Laboratorio II\source\repos\gimnasio\Gimnasio\Gimnasio\obj\Debug\Gimnasio.csproj.CoreCompileInputs.cache
 C:\Users\Usuario\OneDrive\Desktop\Facultad\Laboratorio II\source\repos\gimnasio\Gimnasio\Gimnasio\obj\Debug\Gimnasio.exe
@@ -36,3 +35,5 @@ C:\Users\Usuario\OneDrive\Desktop\Facultad\Laboratorio II\source\repos\gimnasio\
 C:\Users\Usuario\OneDrive\Desktop\Facultad\Laboratorio II\source\repos\gimnasio\Gimnasio\Gimnasio\bin\Debug\System.Numerics.Vectors.xml
 C:\Users\Usuario\OneDrive\Desktop\Facultad\Laboratorio II\source\repos\gimnasio\Gimnasio\Gimnasio\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\Usuario\OneDrive\Desktop\Facultad\Laboratorio II\source\repos\gimnasio\Gimnasio\Gimnasio\obj\Debug\Gimnasio.csproj.CopyComplete
+C:\Users\Usuario\OneDrive\Desktop\Facultad\Laboratorio II\source\repos\gimnasio\Gimnasio\Gimnasio\obj\Debug\Gimnasio.frmLog.resources
+C:\Users\Usuario\OneDrive\Desktop\Facultad\Laboratorio II\source\repos\gimnasio\Gimnasio\Gimnasio\obj\Debug\Gimnasio.View.frmTurns.resources
