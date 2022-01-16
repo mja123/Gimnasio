@@ -102,9 +102,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\ConfigDB.cs" />
+    <Compile Include="Model\TurnsModel.cs" />
     <Compile Include="Model\UsersModel.cs" />
     <Compile Include="Presenter\ILog.cs" />
+    <Compile Include="Presenter\ITurns.cs" />
     <Compile Include="Presenter\LogManage.cs" />
+    <Compile Include="Presenter\TunsManage.cs" />
+    <Compile Include="View\Home.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Home.Designer.cs">
+      <DependentUpon>Home.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Logs.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -128,6 +137,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\Home.resx">
+      <DependentUpon>Home.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Logs.resx">
       <DependentUpon>Logs.cs</DependentUpon>
     </EmbeddedResource>

@@ -15,7 +15,7 @@ namespace Gimnasio
     public partial class frmLog : Form, ILog
     {
         Presenter.LogManage logManager = null;
-        View.Home frmHome = null;
+        View.frmHome frmHome = null;
         public frmLog()
         {
             InitializeComponent();
@@ -64,7 +64,7 @@ namespace Gimnasio
             switch(result)
             {
                 case 200:
-                    frmHome = new View.Home(lblUsername.Text);
+                    frmHome = new View.frmHome(lblUsername.Text);
                     this.Hide();
                     frmHome.Show();
                     break;

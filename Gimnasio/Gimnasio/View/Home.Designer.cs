@@ -1,7 +1,7 @@
 ﻿
 namespace Gimnasio.View
 {
-    partial class Home
+    partial class frmHome
     {
         /// <summary>
         /// Required designer variable.
@@ -51,6 +51,7 @@ namespace Gimnasio.View
             this.btnTurns.TabIndex = 1;
             this.btnTurns.Text = "Gestor de turnos";
             this.btnTurns.UseVisualStyleBackColor = true;
+            this.btnTurns.Click += new System.EventHandler(this.btnTurns_Click);
             // 
             // btnPB
             // 
@@ -61,7 +62,7 @@ namespace Gimnasio.View
             this.btnPB.Text = "Mis PB";
             this.btnPB.UseVisualStyleBackColor = true;
             // 
-            // Home
+            // frmHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -69,7 +70,7 @@ namespace Gimnasio.View
             this.Controls.Add(this.btnPB);
             this.Controls.Add(this.btnTurns);
             this.Controls.Add(this.lblWelcome);
-            this.Name = "Home";
+            this.Name = "frmHome";
             this.Text = "Home";
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Gimnasio.Presenter;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,11 +11,24 @@ using System.Windows.Forms;
 
 namespace Gimnasio.View
 {
-    public partial class frmTurns : Form
+    public partial class frmTurns : Form, ITurns
     {
-        public frmTurns()
+        private string username;
+        private Presenter.TunsManage turnsManager;
+        public frmTurns(string username)
         {
             InitializeComponent();
+            this.username = username;
+        }
+
+        private void btnMakeAnAppointment_Click(object sender, EventArgs e)
+        {
+            turnsManager = new Presenter.TunsManage(this);
+        }
+
+        int ITurns.appointmentTime()
+        {
+            return 0;
         }
     }
 }

@@ -37,3 +37,4 @@ C:\Users\Usuario\OneDrive\Desktop\Facultad\Laboratorio II\source\repos\gimnasio\
 C:\Users\Usuario\OneDrive\Desktop\Facultad\Laboratorio II\source\repos\gimnasio\Gimnasio\Gimnasio\obj\Debug\Gimnasio.csproj.CopyComplete
 C:\Users\Usuario\OneDrive\Desktop\Facultad\Laboratorio II\source\repos\gimnasio\Gimnasio\Gimnasio\obj\Debug\Gimnasio.frmLog.resources
 C:\Users\Usuario\OneDrive\Desktop\Facultad\Laboratorio II\source\repos\gimnasio\Gimnasio\Gimnasio\obj\Debug\Gimnasio.View.frmTurns.resources
+C:\Users\Usuario\OneDrive\Desktop\Facultad\Laboratorio II\source\repos\gimnasio\Gimnasio\Gimnasio\obj\Debug\Gimnasio.View.frmHome.resources

@@ -29,33 +29,25 @@ namespace Gimnasio.View
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblWelcomeTitle = new System.Windows.Forms.Label();
             this.btnMakeAnAppointment = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.cmbSchedule = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
-            // 
-            // lblWelcomeTitle
-            // 
-            this.lblWelcomeTitle.AutoSize = true;
-            this.lblWelcomeTitle.Location = new System.Drawing.Point(122, 47);
-            this.lblWelcomeTitle.Name = "lblWelcomeTitle";
-            this.lblWelcomeTitle.Size = new System.Drawing.Size(274, 13);
-            this.lblWelcomeTitle.TabIndex = 0;
-            this.lblWelcomeTitle.Text = "Bienvenido/a a nuestro gestor de turnos para Gym UDA!";
             // 
             // btnMakeAnAppointment
             // 
-            this.btnMakeAnAppointment.Location = new System.Drawing.Point(65, 98);
+            this.btnMakeAnAppointment.Location = new System.Drawing.Point(12, 40);
             this.btnMakeAnAppointment.Name = "btnMakeAnAppointment";
-            this.btnMakeAnAppointment.Size = new System.Drawing.Size(91, 23);
+            this.btnMakeAnAppointment.Size = new System.Drawing.Size(119, 23);
             this.btnMakeAnAppointment.TabIndex = 1;
             this.btnMakeAnAppointment.Text = "Reservar turno";
             this.btnMakeAnAppointment.UseVisualStyleBackColor = true;
+            this.btnMakeAnAppointment.Click += new System.EventHandler(this.btnMakeAnAppointment_Click);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(204, 98);
+            this.button1.Location = new System.Drawing.Point(243, 40);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(119, 23);
             this.button1.TabIndex = 2;
@@ -64,33 +56,52 @@ namespace Gimnasio.View
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(367, 98);
+            this.button2.Location = new System.Drawing.Point(457, 40);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(95, 23);
+            this.button2.Size = new System.Drawing.Size(119, 23);
             this.button2.TabIndex = 3;
             this.button2.Text = "Cancelar reserva";
             this.button2.UseVisualStyleBackColor = true;
             // 
+            // cmbSchedule
+            // 
+            this.cmbSchedule.FormattingEnabled = true;
+            this.cmbSchedule.Items.AddRange(new object[] {
+            "09:00",
+            "10:00",
+            "11:00",
+            "12:00",
+            "13:00",
+            "16:00",
+            "17:00",
+            "18:00",
+            "19:00",
+            "20:00",
+            "21:00"});
+            this.cmbSchedule.Location = new System.Drawing.Point(12, 80);
+            this.cmbSchedule.Name = "cmbSchedule";
+            this.cmbSchedule.Size = new System.Drawing.Size(121, 21);
+            this.cmbSchedule.TabIndex = 4;
+            this.cmbSchedule.Text = "Horarios";
+            // 
             // frmTurns
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(516, 171);
+            this.ClientSize = new System.Drawing.Size(637, 355);
+            this.Controls.Add(this.cmbSchedule);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnMakeAnAppointment);
-            this.Controls.Add(this.lblWelcomeTitle);
             this.Name = "frmTurns";
             this.Text = "Gestor de turnos";
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lblWelcomeTitle;
         private System.Windows.Forms.Button btnMakeAnAppointment;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ComboBox cmbSchedule;
     }
 }
