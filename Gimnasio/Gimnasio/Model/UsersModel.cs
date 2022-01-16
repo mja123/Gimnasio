@@ -14,8 +14,16 @@ namespace Gimnasio.Model
     {
         private MySqlConnection db = ConfigDB.MySql;
         private int statusCode;
+        private MySqlDataAdapter dbAdapter;
+        private DataSet dataSet;
+        private MySqlCommandBuilder commandBuilder;
+        private MySqlCommand command;
+        private string query;
         public UsersModel()
         {
+            db = ConfigDB.MySql;
+            dataSet = new DataSet();
+            
         }
 
         public int createUser(string[] userData)
@@ -23,27 +31,26 @@ namespace Gimnasio.Model
 
             try
             {
-                if (this.getUser(userData) == 400)
+                Console.WriteLine(statusCode);
+                if (this.userExist(userData[0]) != 500)
                 {
-                    Console.WriteLine("here");
                     db.Open();
-                    Console.WriteLine("Opened");
 
-                    MySqlCommand mySqlCommand = new MySqlCommand("INSERT INTO gym_uda.users(username, password) VALUES('" + userData[0] + "', '" + userData[1] + "') ", db);
-
+                    query = "INSERT INTO gym_uda.users(username, password) VALUES('" + userData[0] + "', '" + userData[1] + "') ";
+                    command = new MySqlCommand(query, db);
+                    command.ExecuteNonQuery();
                     statusCode = 201;
-                    return statusCode;
-                } else
-                {
-                    return 400;
                 }
-
-               
+                return statusCode;
             } catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                Console.WriteLine(e.Message + " createUser");
                 statusCode = 409;
-                return statusCode; ;
+                return statusCode;
+
+            } finally
+            {
+                db.Close();
             }
         }
         public int getUser(string[] userData)
@@ -54,24 +61,50 @@ namespace Gimnasio.Model
                 db.Open();
                 Console.WriteLine("Opened");
 
-                MySqlCommand mySqlCommand = new MySqlCommand("SELECT user_id FROM users WHERE username ='"+ userData[0] + "'AND password ='" + userData[1] + "' ", db);      
-                result = Convert.ToInt32(mySqlCommand.ExecuteScalar());
-                Console.WriteLine(result);
+                query = "SELECT user_id FROM users WHERE username ='" + userData[0] + "'AND password ='" + userData[1] + "' ";
+                command = new MySqlCommand(query, db);      
+                result = Convert.ToInt32(command.ExecuteScalar());                
                 if(result != 0)
                 {
                     statusCode = 200;                  
                 } else
                 {
-                    statusCode = 400;                    
+                    statusCode = 404;                    
                 }
-                                
                 return statusCode;
             } catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                Console.WriteLine(e.Message + "getUser");
                 statusCode = 500;
                 return statusCode;
+            } finally
+            {
+                db.Close();
             }
-}
+}       private int userExist(string name)
+        {
+            try
+            {
+                db.Open();
+                query = "SELECT username FROM users WHERE '" + name + "' = username";
+                command = new MySqlCommand(query, db);
+                if (Convert.ToString(command) != name)
+                {
+                    statusCode = 404;
+
+                }
+                return statusCode;
+            } catch(Exception e)
+            {
+                Console.WriteLine(e.Message + " UserExist");
+                statusCode = 500;
+                return statusCode;
+            } finally
+            {
+                
+                db.Close();
+            }
+            
+        }
     }
 }

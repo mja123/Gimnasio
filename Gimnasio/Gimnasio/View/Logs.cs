@@ -15,7 +15,7 @@ namespace Gimnasio
     public partial class frmLog : Form, ILog
     {
         Presenter.LogManage logManager = null;
-        View.frmTurns turns = null; 
+        View.Home frmHome = null;
         public frmLog()
         {
             InitializeComponent();
@@ -34,10 +34,10 @@ namespace Gimnasio
         string[] ILog.dataUser()
         {
             string[] userInformation = new string[2];
+
             userInformation[0] = txtUsername.Text;
             userInformation[1] = txtPassword.Text;
-            Console.WriteLine(userInformation[0]);
-            Console.WriteLine(userInformation[1]);
+
             return userInformation;
         }
         void ILog.createdUser(int result)
@@ -46,12 +46,12 @@ namespace Gimnasio
             {
                 case 201:
                     MessageBox.Show("Usuario creado correctamente!", "Logup", MessageBoxButtons.OK);
-                    break;
-                case 400:
-                    MessageBox.Show("Usuario no disponible", "Logup", MessageBoxButtons.OK);
-                    break;
+                    break;              
                 case 406:
                     MessageBox.Show("El usuario y la contraseña deben tener más de 3 caracteres", "Logun", MessageBoxButtons.OK);
+                    break;
+                case 409:
+                    MessageBox.Show("Usuario no disponible", "Logup", MessageBoxButtons.OK);
                     break;
                 default:
                     MessageBox.Show("Error al crear el usuario. Intente nuevamente", "Logup", MessageBoxButtons.OK);
@@ -64,11 +64,11 @@ namespace Gimnasio
             switch(result)
             {
                 case 200:
-                    turns = new View.frmTurns();
+                    frmHome = new View.Home(lblUsername.Text);
                     this.Hide();
-                    turns.Show();
+                    frmHome.Show();
                     break;
-                case 400:
+                case 404:
                     MessageBox.Show("Usuario no encontrado", "Login", MessageBoxButtons.OK);
                     break;
                 case 406:

@@ -12,13 +12,14 @@ namespace Gimnasio.Presenter
         private bool newUser;
         private string[] userData;
         private Model.UsersModel userModel;
-
+        private int result;
 
         public LogManage(ILog log, bool newUser)
         {
             this.log = log;
             userModel = new Model.UsersModel();
             this.newUser = newUser;
+            userData = log.dataUser();
             logSelection();
         }
         public void logSelection()
@@ -36,29 +37,31 @@ namespace Gimnasio.Presenter
         }
         public void createUser()
         {
-            string[] userData = this.log.dataUser();
-            if ((userData[0].Length & userData[1].Length) < 3)
+            if ((userData[0].Length & userData[1].Length) > 3)
             {
-                log.createdUser(406);
+                result = userModel.createUser(userData);
+                log.createdUser(result);
+                
             } else
             {
-                int result = userModel.createUser(this.log.dataUser());
-                log.createdUser(result);
+                log.createdUser(406);
             }
 
             
         }
         public void logInUser()
         {
-            string[] userData = this.log.dataUser();
-            if ((userData[0].Length & userData[1].Length) < 3)
+            
+            if ((userData[0].Length & userData[1].Length) > 3)
             {
-                log.createdUser(406);
+                
+                result = userModel.getUser(userData);
+                log.getUser(result);
+             
             }
             else
             {
-                int result = userModel.getUser(this.log.dataUser());
-                log.getUser(result);
+                log.createdUser(406);
             }
         }
     }
