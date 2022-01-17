@@ -33,6 +33,7 @@ namespace Gimnasio.View
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.cmbSchedule = new System.Windows.Forms.ComboBox();
+            this.btnConfirmTurn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnMakeAnAppointment
@@ -84,10 +85,21 @@ namespace Gimnasio.View
             this.cmbSchedule.TabIndex = 4;
             this.cmbSchedule.Text = "Horarios";
             // 
+            // btnConfirmTurn
+            // 
+            this.btnConfirmTurn.Location = new System.Drawing.Point(25, 120);
+            this.btnConfirmTurn.Name = "btnConfirmTurn";
+            this.btnConfirmTurn.Size = new System.Drawing.Size(94, 26);
+            this.btnConfirmTurn.TabIndex = 5;
+            this.btnConfirmTurn.Text = "Confirmar";
+            this.btnConfirmTurn.UseVisualStyleBackColor = true;
+            this.btnConfirmTurn.Click += new System.EventHandler(this.btnConfirmTurn_Click);
+            // 
             // frmTurns
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(637, 355);
+            this.Controls.Add(this.btnConfirmTurn);
             this.Controls.Add(this.cmbSchedule);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -103,5 +115,6 @@ namespace Gimnasio.View
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ComboBox cmbSchedule;
+        private System.Windows.Forms.Button btnConfirmTurn;
     }
 }

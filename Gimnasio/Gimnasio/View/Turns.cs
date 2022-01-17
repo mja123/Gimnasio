@@ -13,22 +13,56 @@ namespace Gimnasio.View
 {
     public partial class frmTurns : Form, ITurns
     {
-        private string username;
         private Presenter.TunsManage turnsManager;
-        public frmTurns(string username)
+        private int userId;
+        public frmTurns(int userId)
         {
             InitializeComponent();
-            this.username = username;
+            this.userId = userId;
+            Console.WriteLine(userId + " userId");
         }
 
         private void btnMakeAnAppointment_Click(object sender, EventArgs e)
         {
-            turnsManager = new Presenter.TunsManage(this);
+            
         }
 
-        int ITurns.appointmentTime()
+        string ITurns.appointmentTime()
         {
-            return 0;
+            int indexHour;
+            string turnHour;
+
+            indexHour = cmbSchedule.SelectedIndex;
+            if (indexHour == -1)
+            {
+                return "-1";
+            }
+            turnHour = cmbSchedule.Items[indexHour].ToString();
+
+            Console.WriteLine(turnHour);
+            return turnHour; 
+        }
+
+        void ITurns.createdTurn(int result)
+        {
+            switch(result)
+            {
+                case 201:
+                    MessageBox.Show("Turno reservado correctamente!", "Reservar turno", MessageBoxButtons.OKCancel);
+                    break;
+                case 400:
+                    MessageBox.Show("Debe ingresar un horario.", "Reservar turno", MessageBoxButtons.OKCancel);
+                    break;
+                default:
+                    MessageBox.Show("Errro de servidor", "Reservar turno", MessageBoxButtons.OKCancel);
+                    break;
+            }
+        }
+        private void btnConfirmTurn_Click(object sender, EventArgs e)
+        {
+
+            turnsManager = new TunsManage(this, userId);
+            turnsManager.createAppointment();
         }
     }
 }

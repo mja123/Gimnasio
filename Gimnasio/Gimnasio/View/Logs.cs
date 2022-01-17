@@ -16,6 +16,7 @@ namespace Gimnasio
     {
         Presenter.LogManage logManager = null;
         View.frmHome frmHome = null;
+        private int userId;
         public frmLog()
         {
             InitializeComponent();
@@ -63,21 +64,23 @@ namespace Gimnasio
         {
             switch(result)
             {
-                case 200:
-                    frmHome = new View.frmHome(lblUsername.Text);
-                    this.Hide();
-                    frmHome.Show();
-                    break;
                 case 404:
                     MessageBox.Show("Usuario no encontrado", "Login", MessageBoxButtons.OK);
                     break;
                 case 406:
                     MessageBox.Show("El usuario y la contraseña deben tener más de 3 caracteres", "Login", MessageBoxButtons.OK);
                     break;
-                default:
+                case 500:
                     MessageBox.Show("Error en el sistema", "Login", MessageBoxButtons.OK);
                     break;
+                default:
+                    Console.WriteLine("userId in Logs {0}", result);
+                    frmHome = new View.frmHome(lblUsername.Text, result);
+                    this.Hide();
+                    frmHome.Show();
+                    break;
             }
+
         }
     }
 }

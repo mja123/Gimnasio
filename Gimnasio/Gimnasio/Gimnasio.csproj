@@ -122,6 +122,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\PB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\PB.Designer.cs">
+      <DependentUpon>PB.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Turns.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,6 +148,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Logs.resx">
       <DependentUpon>Logs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\PB.resx">
+      <DependentUpon>PB.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Turns.resx">
       <DependentUpon>Turns.cs</DependentUpon>

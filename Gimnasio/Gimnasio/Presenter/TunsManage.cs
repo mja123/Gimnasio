@@ -8,16 +8,58 @@ namespace Gimnasio.Presenter
 {
     class TunsManage
     {
-        private ITurns view;
-        public TunsManage(ITurns view)
+        private ITurns turnView;
+        private int userId;
+        private Model.TurnsModel turnsModel;
+        private string stringHour;
+
+        public TunsManage(ITurns view, int userId)
         {
-            this.view = view;
+            this.turnView = view;
+            this.userId = userId;
+        }
+        public void createAppointment()
+        {
+            int result;
+            if (this.validateHour())
+            {
+                turnsModel = new Model.TurnsModel();
+                try
+                {
+                    
+                    result = turnsModel.createTurn(convertHour(), convertDate(), userId);
+                    turnView.createdTurn(result);
+                } catch (Exception e)
+                {
+                    turnView.createdTurn(500);
+                }
+                
+            }
+          
         }
 
-        public int createAppointment()
+        private bool validateHour()
+        {
+            if (turnView.appointmentTime() == "-1")
+            {
+                turnView.createdTurn(400);
+                return false;
+            }
+            return true;
+        }
+        private string convertHour()
         {
 
-            return 0;
+
+            stringHour = Convert.ToDateTime(this.turnView.appointmentTime()).ToString("HH:mm");
+            return stringHour;
+        }
+
+        private string convertDate()
+        {
+            string day = DateTime.Now.ToString("yyyy-MM-dd");
+
+            return day;
         }
     }
 }

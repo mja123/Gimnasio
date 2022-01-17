@@ -8,6 +8,7 @@ namespace Gimnasio.Presenter
 {
     interface ITurns
     {
-        int appointmentTime();
+        string appointmentTime();
+        void createdTurn(int result);
     }
 }

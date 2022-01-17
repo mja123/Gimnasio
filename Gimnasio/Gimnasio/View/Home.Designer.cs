@@ -61,6 +61,7 @@ namespace Gimnasio.View
             this.btnPB.TabIndex = 2;
             this.btnPB.Text = "Mis PB";
             this.btnPB.UseVisualStyleBackColor = true;
+            this.btnPB.Click += new System.EventHandler(this.btnPB_Click);
             // 
             // frmHome
             // 

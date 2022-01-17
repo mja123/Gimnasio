@@ -14,16 +14,12 @@ namespace Gimnasio.Model
     {
         private MySqlConnection db = ConfigDB.MySql;
         private int statusCode;
-        private MySqlDataAdapter dbAdapter;
-        private DataSet dataSet;
-        private MySqlCommandBuilder commandBuilder;
         private MySqlCommand command;
         private string query;
         public UsersModel()
         {
             db = ConfigDB.MySql;
-            dataSet = new DataSet();
-            
+
         }
 
         public int createUser(string[] userData)
@@ -63,10 +59,10 @@ namespace Gimnasio.Model
 
                 query = "SELECT user_id FROM users WHERE username ='" + userData[0] + "'AND password ='" + userData[1] + "' ";
                 command = new MySqlCommand(query, db);      
-                result = Convert.ToInt32(command.ExecuteScalar());                
+                result = Convert.ToInt32(command.ExecuteScalar());
                 if(result != 0)
                 {
-                    statusCode = 200;                  
+                    return result;                  
                 } else
                 {
                     statusCode = 404;                    

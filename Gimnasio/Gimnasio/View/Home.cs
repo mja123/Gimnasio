@@ -15,17 +15,27 @@ namespace Gimnasio.View
     {
         private string username;
         private View.frmTurns turns;
-        public frmHome(string username)
+        private View.frmPB pb;
+        private int userId;
+        public frmHome(string username, int userId)
         {
             this.username = username;
+            this.userId = userId;
             InitializeComponent();
         }
 
         private void btnTurns_Click(object sender, EventArgs e)
         {
-            turns = new frmTurns(username);
+            turns = new frmTurns(userId);
             this.Hide();
             turns.Show();
+        }
+
+        private void btnPB_Click(object sender, EventArgs e)
+        {
+            pb = new frmPB(userId);
+            this.Hide();
+            pb.Show();
         }
     }
 }

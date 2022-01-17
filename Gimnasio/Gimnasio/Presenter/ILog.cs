@@ -12,7 +12,5 @@ namespace Gimnasio.Presenter
         void createdUser(int result);
 
         void getUser(int result);
-        
-
     }
 }
