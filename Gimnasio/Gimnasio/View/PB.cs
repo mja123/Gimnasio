@@ -13,7 +13,7 @@ namespace Gimnasio.View
     public partial class frmPB : Form
     {
         private int userId;
-        public frmPB(int userId)
+        public frmPB(string username, int userId)
         {
             InitializeComponent();
             this.userId = userId;

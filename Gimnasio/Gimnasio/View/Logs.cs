@@ -75,7 +75,7 @@ namespace Gimnasio
                     break;
                 default:
                     Console.WriteLine("userId in Logs {0}", result);
-                    frmHome = new View.frmHome(lblUsername.Text, result);
+                    frmHome = new View.frmHome(txtUsername.Text, result);
                     this.Hide();
                     frmHome.Show();
                     break;

@@ -19,21 +19,23 @@ namespace Gimnasio.View
         private int userId;
         public frmHome(string username, int userId)
         {
+            InitializeComponent();
             this.username = username;
             this.userId = userId;
-            InitializeComponent();
+            lblWelcome.Text = "Bienvenido/a " + username + " a Gym UDA";
+
         }
 
         private void btnTurns_Click(object sender, EventArgs e)
         {
-            turns = new frmTurns(userId);
+            turns = new frmTurns(username, userId);
             this.Hide();
             turns.Show();
         }
 
         private void btnPB_Click(object sender, EventArgs e)
         {
-            pb = new frmPB(userId);
+            pb = new frmPB(username, userId);
             this.Hide();
             pb.Show();
         }

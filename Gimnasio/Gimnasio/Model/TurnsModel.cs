@@ -1,6 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -44,31 +44,51 @@ namespace Gimnasio.Model
                 db.Close();
             }
         }
-        public int getUser(string[] userData)
+        public DataTable getAppoitments(int userId)
         {
-            int result;
+            DataTable appointments = new DataTable();
+            try
+            {               
+                db.Open();
+
+                query = "SELECT turn_day, turn_hour FROM turns WHERE (user_id = " + userId + ")";
+                command = new MySqlCommand(query, db);
+                MySqlDataReader reader = command.ExecuteReader();
+                appointments.Load(reader);
+
+                return appointments;
+            } catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return appointments;
+            } finally
+            {
+                db.Close();
+            }
+        }
+       
+        public int deleteTurn(string hour, string day, int userId)
+        {
             try
             {
-
-                db.Open();
-                Console.WriteLine("Opened");
-
-                query = "SELECT user_id FROM users WHERE username ='" + userData[0] + "'AND password ='" + userData[1] + "' ";
-                command = new MySqlCommand(query, db);
-                result = Convert.ToInt32(command.ExecuteScalar());
-                if (result != 0)
+                if (this.turnExist(hour, day, userId))
                 {
+                    db.Open();
+                    query = "DELETE FROM turns WHERE (turn_day = '" + day + "' AND turn_hour ='" + hour + "' AND user_id = " + userId + ")";
+
+                    command = new MySqlCommand(query, db);
+                    command.ExecuteNonQuery();
+
                     statusCode = 200;
+                    return statusCode;
+
                 }
-                else
-                {
-                    statusCode = 404;
-                }
+                statusCode = 404;
                 return statusCode;
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message + "getUser");
+                Console.WriteLine(e.Message);
                 statusCode = 500;
                 return statusCode;
             }
@@ -77,25 +97,30 @@ namespace Gimnasio.Model
                 db.Close();
             }
         }
-        private int userExist(string name)
+        private bool turnExist(string hour, string day, int userId)
         {
             try
             {
+                int result;                
                 db.Open();
-                query = "SELECT username FROM users WHERE '" + name + "' = username";
+                query = "SELECT turn_id FROM turns WHERE (turn_day = '" + day + "' AND turn_hour ='" + hour + "' AND user_id = " + userId + ")";
                 command = new MySqlCommand(query, db);
-                if (Convert.ToString(command) != name)
+
+                result = Convert.ToInt32(command.ExecuteScalar());
+
+                statusCode = 200;
+                if (result == 0)
                 {
-                    statusCode = 404;
+                    return false;
 
                 }
-                return statusCode;
+                return true;
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message + " UserExist");
+                Console.WriteLine(e.Message + " turnExist");
                 statusCode = 500;
-                return statusCode;
+                return false;
             }
             finally
             {

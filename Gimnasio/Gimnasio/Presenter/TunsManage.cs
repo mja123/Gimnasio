@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,33 +8,61 @@ namespace Gimnasio.Presenter
     class TunsManage
     {
         private ITurns turnView;
-        private int userId;
+        private int userId, result;
         private Model.TurnsModel turnsModel;
-        private string stringHour;
+        private string day, hour;
 
         public TunsManage(ITurns view, int userId)
         {
+            turnsModel = new Model.TurnsModel();
             this.turnView = view;
             this.userId = userId;
         }
         public void createAppointment()
         {
-            int result;
             if (this.validateHour())
             {
-                turnsModel = new Model.TurnsModel();
+                day = convertDay();
+                hour = convertHour();                
                 try
                 {
-                    
-                    result = turnsModel.createTurn(convertHour(), convertDate(), userId);
+                    result = turnsModel.createTurn(hour, day, userId);
                     turnView.createdTurn(result);
                 } catch (Exception e)
                 {
                     turnView.createdTurn(500);
                 }
-                
             }
-          
+        }
+
+        public void getAllOfAppointments(int userId)
+        {
+            try
+            {                
+                turnView.getTurns(turnsModel.getAppoitments(userId));
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message + " getAllOfAppointments");
+            }
+        }
+        public void deleteAppointment()
+        {
+            if (this.validateHour())
+            {
+                day = convertDay();
+                hour = convertHour();
+
+                try
+                {
+                    result = turnsModel.deleteTurn(hour, day, userId);
+                    turnView.deletedTurn(result);
+                }
+                catch (Exception e)
+                {
+                    turnView.deletedTurn(500);
+                }
+            }
         }
 
         private bool validateHour()
@@ -48,18 +75,21 @@ namespace Gimnasio.Presenter
             return true;
         }
         private string convertHour()
-        {
-
-
-            stringHour = Convert.ToDateTime(this.turnView.appointmentTime()).ToString("HH:mm");
-            return stringHour;
+        {            
+            hour = Convert.ToDateTime(this.turnView.appointmentTime()).ToString("HH:mm");
+            return hour;
         }
 
-        private string convertDate()
+        private string convertDay()
         {
-            string day = DateTime.Now.ToString("yyyy-MM-dd");
+            string day,formatedDay;
 
-            return day;
+            day = turnView.appointmentDay();
+
+            formatedDay = DateTime.Parse(day).Date.ToString("yyyy-MM-dd");
+
+            return formatedDay;
+
         }
     }
 }

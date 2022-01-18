@@ -1,6 +1,5 @@
 ﻿using Gimnasio.Presenter;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -14,17 +13,23 @@ namespace Gimnasio.View
     public partial class frmTurns : Form, ITurns
     {
         private Presenter.TunsManage turnsManager;
-        private int userId;
-        public frmTurns(int userId)
+        private string username;
+        private int userId;       
+        private View.frmHome home;
+        public frmTurns(string username, int userId)
         {
             InitializeComponent();
+            turnsManager = new TunsManage(this, userId);
+            this.username = username;
             this.userId = userId;
-            Console.WriteLine(userId + " userId");
+            turnsManager.getAllOfAppointments(userId);
+
         }
 
-        private void btnMakeAnAppointment_Click(object sender, EventArgs e)
+        string ITurns.appointmentDay()
         {
-            
+            string selectedDay = cldTurnsCalendar.SelectionStart.ToShortDateString();
+            return selectedDay;            
         }
 
         string ITurns.appointmentTime()
@@ -58,11 +63,60 @@ namespace Gimnasio.View
                     break;
             }
         }
+
+        void ITurns.getTurns(DataTable appointments)
+        {
+            dgvTunsHistorial.DataSource = appointments;
+        }
+
+        void ITurns.deletedTurn(int result)
+        {
+            switch (result)
+            {
+                case 200:
+                    MessageBox.Show("Turno eliminado correctamente!", "Eliminar turno", MessageBoxButtons.OKCancel);
+                    break;
+                case 404:
+                    MessageBox.Show("Turno no encontrado.", "Eliminar turno", MessageBoxButtons.OKCancel);
+                    break;
+                default:
+                    MessageBox.Show("Errro de servidor", "Eliminar turno", MessageBoxButtons.OKCancel);
+                    break;
+            }
+        }
         private void btnConfirmTurn_Click(object sender, EventArgs e)
         {
-
-            turnsManager = new TunsManage(this, userId);
+            
             turnsManager.createAppointment();
+        }
+
+        private void btnTurnCancel_Click(object sender, EventArgs e)
+        {
+            turnsManager.deleteAppointment();
+        }
+
+        private void btnHistorialRefresh_Click(object sender, EventArgs e)
+        {
+            turnsManager.getAllOfAppointments(userId);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            home = new View.frmHome(username, userId);
+            this.Hide();
+            home.Show();
+        }
+        private void TODO()
+        {
+            /*
+            TODO:
+                - Hashear contraseña
+                - Frontend
+                - Validaciones de si el turno existe
+                - CRUD de PB
+                - Validación de máximo número de caracteres en la contraseña
+                - Confirmar eliminar el turno
+             */
         }
     }
 }
