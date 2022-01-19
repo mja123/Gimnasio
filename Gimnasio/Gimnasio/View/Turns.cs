@@ -15,7 +15,6 @@ namespace Gimnasio.View
         private Presenter.TunsManage turnsManager;
         private string username;
         private int userId;       
-        private View.frmHome home;
         public frmTurns(string username, int userId)
         {
             InitializeComponent();
@@ -102,7 +101,7 @@ namespace Gimnasio.View
 
         private void button1_Click(object sender, EventArgs e)
         {
-            home = new View.frmHome(username, userId);
+            View.frmHome home = new View.frmHome(username, userId);
             this.Hide();
             home.Show();
         }
@@ -113,9 +112,10 @@ namespace Gimnasio.View
                 - Hashear contraseña
                 - Frontend
                 - Validaciones de si el turno existe
-                - CRUD de PB
+                - Validaciones en presenters
+                - Vaciar los txt luego de ingresados en pb
                 - Validación de máximo número de caracteres en la contraseña
-                - Confirmar eliminar el turno
+                - Confirmar eliminar
              */
         }
     }

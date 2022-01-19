@@ -102,11 +102,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\ConfigDB.cs" />
+    <Compile Include="Model\PBsModel.cs" />
     <Compile Include="Model\TurnsModel.cs" />
     <Compile Include="Model\UsersModel.cs" />
     <Compile Include="Presenter\ILog.cs" />
+    <Compile Include="Presenter\IPB.cs" />
     <Compile Include="Presenter\ITurns.cs" />
     <Compile Include="Presenter\LogManage.cs" />
+    <Compile Include="Presenter\PBsManage.cs" />
     <Compile Include="Presenter\TunsManage.cs" />
     <Compile Include="View\Home.cs">
       <SubType>Form</SubType>

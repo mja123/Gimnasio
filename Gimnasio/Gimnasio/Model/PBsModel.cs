@@ -1,5 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -7,26 +9,27 @@ using System.Threading.Tasks;
 
 namespace Gimnasio.Model
 {
-    class TurnsModel
-    {
+    class PBsModel
+    {       
+ 
         private MySqlConnection db;
         private int statusCode;
         private MySqlCommand command;
         private string query;
 
-        public TurnsModel()
+        public PBsModel()
         {
             db = ConfigDB.MySql;
-            
-        }
 
-        public int createTurn(string hour, string day, int userId)
+        }
+        public int newPb(ArrayList pbData, int userId)
         {
             try
-            {               
+            {
                 db.Open();
-                query = "INSERT INTO gym_uda.turns(turn_day, turn_hour, user_id) VALUES('"+ day + "', '"+ hour +"', "+ userId +")";
-                
+
+                query = "INSERT INTO pbs(exercise, weight, reps, user_id) VALUES('" + pbData[0] + "', " + pbData[1] + ", " + pbData[2] + ", " + userId + ")";
+
                 command = new MySqlCommand(query, db);
                 command.ExecuteNonQuery();
 
@@ -44,37 +47,68 @@ namespace Gimnasio.Model
                 db.Close();
             }
         }
-        public DataTable getAppoitments(int userId)
+
+        public DataTable getOnePB(string exercise, int userId)
         {
-            DataTable appointments = new DataTable();
+            DataTable pb = new DataTable();
             try
-            {               
-                db.Open();
+            {                          
+                if (this.pbExist(exercise, userId))
+                {
+                    db.Open();
 
-                query = "SELECT turn_day, turn_hour FROM turns WHERE (user_id = " + userId + ")";
-                command = new MySqlCommand(query, db);
-                MySqlDataReader reader = command.ExecuteReader();
-                appointments.Load(reader);
+                    query = "SELECT exercise, weight, reps FROM pbs WHERE(exercise = '" + exercise + "' AND user_id = '" + userId + "')";
+                    command = new MySqlCommand(query, db);
 
-                return appointments;
+                   
+                    MySqlDataReader reader = command.ExecuteReader();
+
+                    pb.Load(reader);                 
+                }
+                return pb;
             } catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                return appointments;
+                return pb;
             } finally
             {
                 db.Close();
             }
         }
-       
-        public int deleteTurn(string hour, string day, int userId)
+
+        public DataTable getPBs(int userId)
+        {
+            DataTable pbs = new DataTable();
+            try
+            {
+                db.Open();
+
+                query = "SELECT exercise, weight, reps FROM pbs WHERE (user_id = " + userId + ")";
+                command = new MySqlCommand(query, db);
+                MySqlDataReader reader = command.ExecuteReader();
+                pbs.Load(reader);
+
+                return pbs;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return pbs;
+            }
+            finally
+            {
+                db.Close();
+            }
+        }
+
+        public int deletePb(string exercise, int userId)
         {
             try
             {
-                if (this.turnExist(hour, day, userId))
+                if (this.pbExist(exercise, userId))
                 {
                     db.Open();
-                    query = "DELETE FROM turns WHERE (turn_day = '" + day + "' AND turn_hour ='" + hour + "' AND user_id = " + userId + ")";
+                    query = "DELETE FROM pbs WHERE (exercise = '" + exercise + "' AND user_id = " + userId + ")";
 
                     command = new MySqlCommand(query, db);
                     command.ExecuteNonQuery();
@@ -97,13 +131,13 @@ namespace Gimnasio.Model
                 db.Close();
             }
         }
-        private bool turnExist(string hour, string day, int userId)
+        private bool pbExist(string exercise, int userId)
         {
             try
             {
-                int result;                
+                int result;
                 db.Open();
-                query = "SELECT turn_id FROM turns WHERE (turn_day = '" + day + "' AND turn_hour ='" + hour + "' AND user_id = " + userId + ")";
+                query = "SELECT pb_id FROM pbs WHERE (exercise = '" + exercise + "' AND user_id = " + userId + ")";
                 command = new MySqlCommand(query, db);
 
                 result = Convert.ToInt32(command.ExecuteScalar());
@@ -118,7 +152,7 @@ namespace Gimnasio.Model
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message + " turnExist");
+                Console.WriteLine(e.Message + " pbExist");
                 statusCode = 500;
                 return false;
             }
