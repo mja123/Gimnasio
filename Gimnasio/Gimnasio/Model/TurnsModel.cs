@@ -23,14 +23,19 @@ namespace Gimnasio.Model
         public int createTurn(string hour, string day, int userId)
         {
             try
-            {               
-                db.Open();
-                query = "INSERT INTO gym_uda.turns(turn_day, turn_hour, user_id) VALUES('"+ day + "', '"+ hour +"', "+ userId +")";
-                
-                command = new MySqlCommand(query, db);
-                command.ExecuteNonQuery();
+            {  
+                if (!this.turnExist(hour, day, userId))
+                {
+                    db.Open();
+                    query = "INSERT INTO gym_uda.turns(turn_day, turn_hour, user_id) VALUES('" + day + "', '" + hour + "', " + userId + ")";
 
-                statusCode = 201;
+                    command = new MySqlCommand(query, db);
+                    command.ExecuteNonQuery();
+
+                    statusCode = 201;
+                    return statusCode;
+                }
+                statusCode = 409;
                 return statusCode;
             }
             catch (Exception e)

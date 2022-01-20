@@ -37,10 +37,20 @@ namespace Gimnasio.Presenter
         }
         public void createUser()
         {
-            if ((userData[0].Length & userData[1].Length) > 3)
+            Console.WriteLine(userData[0] + " " + userData[0].Length);
+            Console.WriteLine(userData[1]+ " "+ userData[1].Length);
+            if ((userData[0].Length & userData[1].Length) >= 3)
             {
-                result = userModel.createUser(userData);
-                log.createdUser(result);
+                if ((userData[0].Length & userData[1].Length) < 20)
+                {
+                    userData[1] = Codify.toEncode(userData[1]);
+
+                    result = userModel.createUser(userData);
+                    log.createdUser(result);
+                } else {
+                    log.createdUser(404);
+                }
+                    
                 
             } else
             {
@@ -54,7 +64,7 @@ namespace Gimnasio.Presenter
             
             if ((userData[0].Length & userData[1].Length) > 3)
             {
-                
+                userData[1] = Codify.toEncode(userData[1]);   
                 result = userModel.getUser(userData);
                 log.getUser(result);
              

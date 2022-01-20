@@ -31,8 +31,11 @@ namespace Gimnasio.View
             ArrayList pbData = new ArrayList();
 
             pbData.Add(txtExercise.Text);
+            txtExercise.Text = ""; 
             pbData.Add(txtWeight.Text);
+            txtWeight.Text = "";
             pbData.Add(txtReps.Text);
+            txtReps.Text = "";
 
             return pbData;
         }
@@ -53,7 +56,9 @@ namespace Gimnasio.View
         }
         string IPB.filterDelete()
         {
-            return txtFilter.Text;
+            string execise = txtFilter.Text;
+            txtFilter.Text = "";
+            return execise;
         }
         void IPB.pbGet(DataTable pb)
         {
@@ -98,7 +103,14 @@ namespace Gimnasio.View
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            pbManager.deletePB();
+
+            DialogResult confirm = MessageBox.Show("Se eliminará un PB", "Confirmar", MessageBoxButtons.YesNo);
+
+            if (confirm == DialogResult.Yes)
+            {
+                pbManager.deletePB();
+            }
+            
         }
 
         private void btnGoBack_Click(object sender, EventArgs e)

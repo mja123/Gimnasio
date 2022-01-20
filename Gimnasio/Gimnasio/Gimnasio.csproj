@@ -105,6 +105,7 @@
     <Compile Include="Model\PBsModel.cs" />
     <Compile Include="Model\TurnsModel.cs" />
     <Compile Include="Model\UsersModel.cs" />
+    <Compile Include="Presenter\Codify.cs" />
     <Compile Include="Presenter\ILog.cs" />
     <Compile Include="Presenter\IPB.cs" />
     <Compile Include="Presenter\ITurns.cs" />

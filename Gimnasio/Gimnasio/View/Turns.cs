@@ -57,6 +57,9 @@ namespace Gimnasio.View
                 case 400:
                     MessageBox.Show("Debe ingresar un horario.", "Reservar turno", MessageBoxButtons.OKCancel);
                     break;
+                case 409:
+                    MessageBox.Show("El turno ya existe", "Reservar turno", MessageBoxButtons.OKCancel);
+                    break;
                 default:
                     MessageBox.Show("Errro de servidor", "Reservar turno", MessageBoxButtons.OKCancel);
                     break;
@@ -91,7 +94,14 @@ namespace Gimnasio.View
 
         private void btnTurnCancel_Click(object sender, EventArgs e)
         {
-            turnsManager.deleteAppointment();
+            
+            DialogResult confirm;
+            confirm = MessageBox.Show("Se eliminará un turno", "Confirmar", MessageBoxButtons.YesNo);
+
+            if (confirm ==  DialogResult.Yes)
+            {
+                turnsManager.deleteAppointment();
+            }
         }
 
         private void btnHistorialRefresh_Click(object sender, EventArgs e)
@@ -109,13 +119,14 @@ namespace Gimnasio.View
         {
             /*
             TODO:
-                - Hashear contraseña
+                DONE- Hashear contraseña
+                - Use enviroment variable to the db connection
                 - Frontend
-                - Validaciones de si el turno existe
+                DONE- Validaciones de si el turno existe
                 - Validaciones en presenters
-                - Vaciar los txt luego de ingresados en pb
-                - Validación de máximo número de caracteres en la contraseña
-                - Confirmar eliminar
+                DONE- Vaciar los txt luego de ingresados en pb
+                DONE- Validación de máximo número de caracteres en la contraseña
+                DONE- Confirmar eliminar
              */
         }
     }

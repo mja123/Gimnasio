@@ -14,12 +14,11 @@ namespace Gimnasio
 {
     public partial class frmLog : Form, ILog
     {
-        Presenter.LogManage logManager = null;
-        View.frmHome frmHome = null;
-        private int userId;
+        Presenter.LogManage logManager;              
         public frmLog()
         {
             InitializeComponent();
+
         }
 
         private void btnLogUp_Click(object sender, EventArgs e)
@@ -47,9 +46,12 @@ namespace Gimnasio
             {
                 case 201:
                     MessageBox.Show("Usuario creado correctamente!", "Logup", MessageBoxButtons.OK);
-                    break;              
+                    break;
+                case 404:
+                    MessageBox.Show("Los datos exceden el número máximo de caracteres", "Logup", MessageBoxButtons.OK);
+                    break;
                 case 406:
-                    MessageBox.Show("El usuario y la contraseña deben tener más de 3 caracteres", "Logun", MessageBoxButtons.OK);
+                    MessageBox.Show("El usuario y la contraseña deben tener más de 3 caracteres", "Logup", MessageBoxButtons.OK);
                     break;
                 case 409:
                     MessageBox.Show("Usuario no disponible", "Logup", MessageBoxButtons.OK);
@@ -75,7 +77,7 @@ namespace Gimnasio
                     break;
                 default:
                     Console.WriteLine("userId in Logs {0}", result);
-                    frmHome = new View.frmHome(txtUsername.Text, result);
+                    View.frmHome frmHome = new View.frmHome(txtUsername.Text, result);
                     this.Hide();
                     frmHome.Show();
                     break;
