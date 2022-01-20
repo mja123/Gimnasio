@@ -46,8 +46,8 @@ namespace Gimnasio.View
                 case 201:
                     MessageBox.Show("PB creado correctamente!", "Crear PB", MessageBoxButtons.OKCancel);
                     break;
-                case 400:
-                    MessageBox.Show("Debe ingresar un horario.", "Crear PB", MessageBoxButtons.OKCancel);
+                case 404:
+                    MessageBox.Show("Debe ingresar todos los datos.", "Crear PB", MessageBoxButtons.OKCancel);
                     break;
                 default:
                     MessageBox.Show("Errro de servidor", "Crear PB", MessageBoxButtons.OKCancel);

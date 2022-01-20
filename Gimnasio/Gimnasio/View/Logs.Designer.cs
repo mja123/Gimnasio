@@ -39,6 +39,8 @@ namespace Gimnasio
             this.btnLogUp = new System.Windows.Forms.Button();
             this.lblLogUp = new System.Windows.Forms.Label();
             this.lblLogIn = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -50,49 +52,58 @@ namespace Gimnasio
             // 
             // lblTitle
             // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Location = new System.Drawing.Point(89, 31);
+            this.lblTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Location = new System.Drawing.Point(66, 53);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(141, 13);
+            this.lblTitle.Size = new System.Drawing.Size(172, 46);
             this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "Bienvenido a Gimnasio UDA";
+            this.lblTitle.Text = "Gimnasio UDA";
+            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblUsername
             // 
-            this.lblUsername.AutoSize = true;
-            this.lblUsername.Location = new System.Drawing.Point(47, 65);
+            this.lblUsername.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lblUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.lblUsername.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.lblUsername.Location = new System.Drawing.Point(272, 39);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(43, 13);
+            this.lblUsername.Size = new System.Drawing.Size(83, 25);
             this.lblUsername.TabIndex = 1;
             this.lblUsername.Text = "Usuario";
+            this.lblUsername.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblPassword
             // 
-            this.lblPassword.AutoSize = true;
-            this.lblPassword.Location = new System.Drawing.Point(47, 146);
+            this.lblPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lblPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.lblPassword.Location = new System.Drawing.Point(272, 109);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(61, 13);
+            this.lblPassword.Size = new System.Drawing.Size(86, 24);
             this.lblPassword.TabIndex = 2;
             this.lblPassword.Text = "Contraseña";
+            this.lblPassword.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtUsername
             // 
-            this.txtUsername.Location = new System.Drawing.Point(50, 101);
+            this.txtUsername.Location = new System.Drawing.Point(272, 77);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(138, 20);
-            this.txtUsername.TabIndex = 3;          
+            this.txtUsername.Size = new System.Drawing.Size(202, 20);
+            this.txtUsername.TabIndex = 3;
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(50, 185);
+            this.txtPassword.Location = new System.Drawing.Point(272, 146);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(138, 20);
+            this.txtPassword.Size = new System.Drawing.Size(202, 20);
             this.txtPassword.TabIndex = 4;
             this.txtPassword.UseSystemPasswordChar = true;
             // 
             // btnLogIn
             // 
-            this.btnLogIn.Location = new System.Drawing.Point(50, 240);
+            this.btnLogIn.Location = new System.Drawing.Point(255, 210);
             this.btnLogIn.Name = "btnLogIn";
             this.btnLogIn.Size = new System.Drawing.Size(75, 23);
             this.btnLogIn.TabIndex = 5;
@@ -102,7 +113,7 @@ namespace Gimnasio
             // 
             // btnLogUp
             // 
-            this.btnLogUp.Location = new System.Drawing.Point(187, 240);
+            this.btnLogUp.Location = new System.Drawing.Point(423, 210);
             this.btnLogUp.Name = "btnLogUp";
             this.btnLogUp.Size = new System.Drawing.Size(75, 23);
             this.btnLogUp.TabIndex = 6;
@@ -126,11 +137,23 @@ namespace Gimnasio
             this.lblLogIn.Size = new System.Drawing.Size(0, 13);
             this.lblLogIn.TabIndex = 8;
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(170)))), ((int)(((byte)(240)))));
+            this.panel1.Controls.Add(this.lblTitle);
+            this.panel1.Location = new System.Drawing.Point(-54, -14);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(256, 308);
+            this.panel1.TabIndex = 9;
+            // 
             // frmLog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(304, 286);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.ClientSize = new System.Drawing.Size(541, 248);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblLogIn);
             this.Controls.Add(this.lblLogUp);
             this.Controls.Add(this.btnLogUp);
@@ -139,9 +162,10 @@ namespace Gimnasio
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.lblUsername);
-            this.Controls.Add(this.lblTitle);
+            this.MaximizeBox = false;
             this.Name = "frmLog";
             this.Text = "Log";
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -159,6 +183,7 @@ namespace Gimnasio
         private System.Windows.Forms.Button btnLogUp;
         private System.Windows.Forms.Label lblLogUp;
         private System.Windows.Forms.Label lblLogIn;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 

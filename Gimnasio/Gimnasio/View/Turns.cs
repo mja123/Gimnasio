@@ -120,10 +120,10 @@ namespace Gimnasio.View
             /*
             TODO:
                 DONE- Hashear contraseña
-                - Use enviroment variable to the db connection
+                
                 - Frontend
                 DONE- Validaciones de si el turno existe
-                - Validaciones en presenters
+                DONE- Validaciones en presenters
                 DONE- Vaciar los txt luego de ingresados en pb
                 DONE- Validación de máximo número de caracteres en la contraseña
                 DONE- Confirmar eliminar
