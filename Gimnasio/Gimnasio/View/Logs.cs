@@ -47,14 +47,14 @@ namespace Gimnasio
                 case 201:
                     MessageBox.Show("Usuario creado correctamente!", "Logup", MessageBoxButtons.OK);
                     break;
-                case 404:
-                    MessageBox.Show("Los datos exceden el número máximo de caracteres", "Logup", MessageBoxButtons.OK);
-                    break;
                 case 406:
                     MessageBox.Show("El usuario y la contraseña deben tener más de 3 caracteres", "Logup", MessageBoxButtons.OK);
                     break;
                 case 409:
                     MessageBox.Show("Usuario no disponible", "Logup", MessageBoxButtons.OK);
+                    break;
+                case 414:
+                    MessageBox.Show("Los datos exceden el número máximo de caracteres", "Logup", MessageBoxButtons.OK);
                     break;
                 default:
                     MessageBox.Show("Error al crear el usuario. Intente nuevamente", "Logup", MessageBoxButtons.OK);

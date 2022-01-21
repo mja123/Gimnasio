@@ -23,14 +23,35 @@ namespace Gimnasio.Presenter
         public void createPB()
         {
             ArrayList data = pbView.createData();
-            Console.WriteLine(data[0] + "" + data[1] + "" + data[2]);
-            if (data[0].Equals("") | data[1].Equals("") | data[2].Equals(""))
+
+            if (data.Count < 3)
             {
-                pbView.pbCreated(404);
+                pbView.pbCreated(409);
             } else
             {
-                result = pbModel.newPb(data, userId);
-                pbView.pbCreated(result);
+
+                if (data[0].Equals("") | data[1].Equals("") | data[2].Equals(""))
+                {
+                    pbView.pbCreated(404);
+                }
+                else if ((!Utils.MaxCountOfChars.isAllow(data[0].ToString(), 40)) |
+                    (!Utils.MaxCountOfChars.isAllow(data[0].ToString(), 10)) |
+                    (!Utils.MaxCountOfChars.isAllow(data[0].ToString(), 10)))
+                {
+                    Console.WriteLine("here");
+                    pbView.pbCreated(414);
+                }
+                else if (data[1].GetType() != typeof(int) | data[2].GetType() != typeof(int))
+                {
+                    pbView.pbCreated(409);
+
+                }
+                else
+                {
+                    result = pbModel.newPb(data, userId);
+                    pbView.pbCreated(result);
+                }
+
             }
 
 
@@ -41,6 +62,7 @@ namespace Gimnasio.Presenter
             string exercise;
 
             exercise = pbView.filterDelete();
+
             pbView.pbGet(pbModel.getOnePB(exercise, userId));
 
 
@@ -63,6 +85,7 @@ namespace Gimnasio.Presenter
                 Console.WriteLine(e.Message + " getAllOfAppointments");
             }
         }
+
     }
 
 }

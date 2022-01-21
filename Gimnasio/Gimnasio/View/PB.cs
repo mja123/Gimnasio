@@ -32,12 +32,20 @@ namespace Gimnasio.View
 
             pbData.Add(txtExercise.Text);
             txtExercise.Text = ""; 
-            pbData.Add(txtWeight.Text);
-            txtWeight.Text = "";
-            pbData.Add(txtReps.Text);
-            txtReps.Text = "";
-
-            return pbData;
+            try
+            {
+                pbData.Add(Convert.ToInt32(txtWeight.Text));
+                txtWeight.Text = "";
+                pbData.Add(Convert.ToInt32(txtReps.Text));
+                txtReps.Text = "";
+                return pbData;
+            } catch (Exception e)
+            {
+                txtWeight.Text = "";
+                txtReps.Text = "";
+                Console.WriteLine(e.Message);               
+            }
+            return pbData;            
         }
         void IPB.pbCreated(int result)
         {
@@ -48,6 +56,12 @@ namespace Gimnasio.View
                     break;
                 case 404:
                     MessageBox.Show("Debe ingresar todos los datos.", "Crear PB", MessageBoxButtons.OKCancel);
+                    break;
+                case 409:
+                    MessageBox.Show("El peso y las repeticiones deben ser números enteros.", "Crear PB", MessageBoxButtons.OKCancel);
+                    break;
+                case 414:
+                    MessageBox.Show("El número de caracteres excede el máximo", "Crear PB", MessageBoxButtons.OKCancel);
                     break;
                 default:
                     MessageBox.Show("Errro de servidor", "Crear PB", MessageBoxButtons.OKCancel);

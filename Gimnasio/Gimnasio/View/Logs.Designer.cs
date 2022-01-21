@@ -29,6 +29,7 @@ namespace Gimnasio
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLog));
             this.label1 = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblUsername = new System.Windows.Forms.Label();
@@ -40,7 +41,9 @@ namespace Gimnasio
             this.lblLogUp = new System.Windows.Forms.Label();
             this.lblLogIn = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -140,11 +143,22 @@ namespace Gimnasio
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(170)))), ((int)(((byte)(240)))));
+            this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.lblTitle);
             this.panel1.Location = new System.Drawing.Point(-54, -14);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(256, 308);
             this.panel1.TabIndex = 9;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(83, 111);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(142, 99);
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
             // 
             // frmLog
             // 
@@ -166,6 +180,7 @@ namespace Gimnasio
             this.Name = "frmLog";
             this.Text = "Log";
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -184,6 +199,7 @@ namespace Gimnasio
         private System.Windows.Forms.Label lblLogUp;
         private System.Windows.Forms.Label lblLogIn;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

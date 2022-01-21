@@ -43,7 +43,7 @@ namespace Gimnasio.View
             // 
             // btnHistorialRefresh
             // 
-            this.btnHistorialRefresh.Location = new System.Drawing.Point(607, 452);
+            this.btnHistorialRefresh.Location = new System.Drawing.Point(475, 452);
             this.btnHistorialRefresh.Name = "btnHistorialRefresh";
             this.btnHistorialRefresh.Size = new System.Drawing.Size(119, 23);
             this.btnHistorialRefresh.TabIndex = 2;
@@ -63,6 +63,7 @@ namespace Gimnasio.View
             // 
             // cmbSchedule
             // 
+            this.cmbSchedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbSchedule.FormattingEnabled = true;
             this.cmbSchedule.Items.AddRange(new object[] {
             "09:00",
@@ -78,7 +79,7 @@ namespace Gimnasio.View
             "21:00"});
             this.cmbSchedule.Location = new System.Drawing.Point(41, 92);
             this.cmbSchedule.Name = "cmbSchedule";
-            this.cmbSchedule.Size = new System.Drawing.Size(121, 21);
+            this.cmbSchedule.Size = new System.Drawing.Size(121, 24);
             this.cmbSchedule.TabIndex = 4;
             this.cmbSchedule.Text = "Horarios";
             // 
@@ -95,7 +96,7 @@ namespace Gimnasio.View
             // dgvTunsHistorial
             // 
             this.dgvTunsHistorial.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTunsHistorial.Location = new System.Drawing.Point(523, 92);
+            this.dgvTunsHistorial.Location = new System.Drawing.Point(399, 92);
             this.dgvTunsHistorial.Name = "dgvTunsHistorial";
             this.dgvTunsHistorial.Size = new System.Drawing.Size(243, 344);
             this.dgvTunsHistorial.TabIndex = 6;
@@ -103,14 +104,16 @@ namespace Gimnasio.View
             // lblReserve
             // 
             this.lblReserve.AutoSize = true;
+            this.lblReserve.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblReserve.Location = new System.Drawing.Point(140, 54);
             this.lblReserve.Name = "lblReserve";
-            this.lblReserve.Size = new System.Drawing.Size(50, 13);
+            this.lblReserve.Size = new System.Drawing.Size(73, 20);
             this.lblReserve.TabIndex = 7;
             this.lblReserve.Text = "Reservar";
             // 
             // cldTurnsCalendar
             // 
+            this.cldTurnsCalendar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cldTurnsCalendar.Location = new System.Drawing.Point(41, 125);
             this.cldTurnsCalendar.MaxDate = new System.DateTime(2022, 12, 31, 0, 0, 0, 0);
             this.cldTurnsCalendar.MaxSelectionCount = 1;
@@ -121,9 +124,10 @@ namespace Gimnasio.View
             // lblHistorial
             // 
             this.lblHistorial.AutoSize = true;
-            this.lblHistorial.Location = new System.Drawing.Point(604, 54);
+            this.lblHistorial.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHistorial.Location = new System.Drawing.Point(442, 54);
             this.lblHistorial.Name = "lblHistorial";
-            this.lblHistorial.Size = new System.Drawing.Size(102, 13);
+            this.lblHistorial.Size = new System.Drawing.Size(152, 20);
             this.lblHistorial.TabIndex = 9;
             this.lblHistorial.Text = "Historial de reservas";
             // 
@@ -140,7 +144,8 @@ namespace Gimnasio.View
             // frmTurns
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(842, 503);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ClientSize = new System.Drawing.Size(695, 503);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.lblHistorial);
             this.Controls.Add(this.cldTurnsCalendar);

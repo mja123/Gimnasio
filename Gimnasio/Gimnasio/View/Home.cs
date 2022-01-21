@@ -22,7 +22,7 @@ namespace Gimnasio.View
             InitializeComponent();
             this.username = username;
             this.userId = userId;
-            lblWelcome.Text = "Bienvenido/a " + username + " a Gym UDA";
+            lblWelcome.Text = "Bienvenido/a " + username;
 
         }
 

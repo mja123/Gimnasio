@@ -51,9 +51,14 @@ namespace Gimnasio.View
             // 
             // dgvPbs
             // 
+            this.dgvPbs.AllowUserToAddRows = false;
+            this.dgvPbs.AllowUserToDeleteRows = false;
+            this.dgvPbs.AllowUserToResizeColumns = false;
+            this.dgvPbs.AllowUserToResizeRows = false;
             this.dgvPbs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPbs.Location = new System.Drawing.Point(112, 24);
             this.dgvPbs.Name = "dgvPbs";
+            this.dgvPbs.ReadOnly = true;
             this.dgvPbs.Size = new System.Drawing.Size(368, 150);
             this.dgvPbs.TabIndex = 0;
             // 
@@ -195,6 +200,7 @@ namespace Gimnasio.View
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.ClientSize = new System.Drawing.Size(596, 464);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.btnGoBack);
