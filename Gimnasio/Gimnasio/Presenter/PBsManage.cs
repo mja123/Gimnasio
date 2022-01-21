@@ -22,39 +22,42 @@ namespace Gimnasio.Presenter
         }
         public void createPB()
         {
-            ArrayList data = pbView.createData();
-
+            ArrayList data = pbView.createData();            
             if (data.Count < 3)
             {
+
                 pbView.pbCreated(409);
-            } else
-            {
+            }
+            else {
+                if (!this.pbExist(data))
+                {
+                    if (data[0].Equals("") | data[1].Equals("") | data[2].Equals(""))
+                    {
+                        pbView.pbCreated(404);
+                    }
+                    else if ((!Utils.MaxCountOfChars.isAllow(data[0].ToString(), 40)) |
+                        (!Utils.MaxCountOfChars.isAllow(data[0].ToString(), 10)) |
+                        (!Utils.MaxCountOfChars.isAllow(data[0].ToString(), 10)))
+                    {
+                        Console.WriteLine("here");
+                        pbView.pbCreated(414);
+                    }
+                    else if (data[1].GetType() != typeof(int) | data[2].GetType() != typeof(int))
+                    {
+                        pbView.pbCreated(409);
 
-                if (data[0].Equals("") | data[1].Equals("") | data[2].Equals(""))
-                {
-                    pbView.pbCreated(404);
-                }
-                else if ((!Utils.MaxCountOfChars.isAllow(data[0].ToString(), 40)) |
-                    (!Utils.MaxCountOfChars.isAllow(data[0].ToString(), 10)) |
-                    (!Utils.MaxCountOfChars.isAllow(data[0].ToString(), 10)))
-                {
-                    Console.WriteLine("here");
-                    pbView.pbCreated(414);
-                }
-                else if (data[1].GetType() != typeof(int) | data[2].GetType() != typeof(int))
-                {
-                    pbView.pbCreated(409);
-
+                    }
+                    else
+                    {
+                        result = pbModel.newPb(data, userId);
+                        pbView.pbCreated(result);
+                    }
                 }
                 else
                 {
-                    result = pbModel.newPb(data, userId);
-                    pbView.pbCreated(result);
+                    pbView.pbCreated(400);
                 }
-
-            }
-
-
+            }            
         }
 
         public void filterPB()
@@ -86,6 +89,17 @@ namespace Gimnasio.Presenter
             }
         }
 
-    }
+        private bool pbExist(ArrayList pbInfo)
+        {
+            string excercise = pbInfo[0].ToString();
+            int weight = Convert.ToInt32(pbInfo[1]);
+            int reps = Convert.ToInt32(pbInfo[2]);
 
+            if (pbModel.pbExist(excercise, weight, reps, userId))
+            {
+                return true;
+            }
+            return false;           
+        }
+    }
 }

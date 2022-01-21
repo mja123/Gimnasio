@@ -147,7 +147,7 @@ namespace Gimnasio.View
             this.gpbPBFilter.Size = new System.Drawing.Size(444, 44);
             this.gpbPBFilter.TabIndex = 9;
             this.gpbPBFilter.TabStop = false;
-            this.gpbPBFilter.Text = "Filtrar | Eliminar";
+            this.gpbPBFilter.Text = "Buscar ejercicio";
             // 
             // btnDelete
             // 

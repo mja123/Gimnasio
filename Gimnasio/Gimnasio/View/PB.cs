@@ -36,8 +36,10 @@ namespace Gimnasio.View
             {
                 pbData.Add(Convert.ToInt32(txtWeight.Text));
                 txtWeight.Text = "";
+
                 pbData.Add(Convert.ToInt32(txtReps.Text));
                 txtReps.Text = "";
+
                 return pbData;
             } catch (Exception e)
             {
@@ -53,6 +55,9 @@ namespace Gimnasio.View
             {
                 case 201:
                     MessageBox.Show("PB creado correctamente!", "Crear PB", MessageBoxButtons.OKCancel);
+                    break;
+                case 400:
+                    MessageBox.Show("El PB ingresado ya existe!", "Crear PB", MessageBoxButtons.OKCancel);
                     break;
                 case 404:
                     MessageBox.Show("Debe ingresar todos los datos.", "Crear PB", MessageBoxButtons.OKCancel);

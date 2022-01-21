@@ -53,7 +53,7 @@ namespace Gimnasio.Model
             DataTable pb = new DataTable();
             try
             {                          
-                if (this.pbExist(exercise, userId))
+                if (this.excerciseExist(exercise, userId))
                 {
                     db.Open();
 
@@ -105,7 +105,7 @@ namespace Gimnasio.Model
         {
             try
             {
-                if (this.pbExist(exercise, userId))
+                if (this.excerciseExist(exercise, userId))
                 {
                     db.Open();
                     query = "DELETE FROM pbs WHERE (exercise = '" + exercise + "' AND user_id = " + userId + ")";
@@ -131,13 +131,44 @@ namespace Gimnasio.Model
                 db.Close();
             }
         }
-        private bool pbExist(string exercise, int userId)
+        private bool excerciseExist(string exercise, int userId)
         {
             try
             {
                 int result;
                 db.Open();
                 query = "SELECT pb_id FROM pbs WHERE (exercise = '" + exercise + "' AND user_id = " + userId + ")";
+                command = new MySqlCommand(query, db);
+
+                result = Convert.ToInt32(command.ExecuteScalar());
+
+                statusCode = 200;
+                if (result == 0)
+                {
+                    return false;
+
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message + " pbExist");
+                statusCode = 500;
+                return false;
+            }
+            finally
+            {
+
+                db.Close();
+            }
+        }
+        public bool pbExist(string exercise, int weight, int reps, int userId)
+        {
+            try
+            {
+                int result;
+                db.Open();
+                query = "SELECT pb_id FROM pbs WHERE (exercise = '" + exercise + "' AND weight = " + weight + " AND reps = " + reps + " AND user_id = " + userId + ")";
                 command = new MySqlCommand(query, db);
 
                 result = Convert.ToInt32(command.ExecuteScalar());
