@@ -129,6 +129,7 @@ namespace Gimnasio.View
         }
         ArrayList IPB.pbDataToDelete()
         {
+            //Selecciona los datos de la fila marcada y llena un ArrayList que luego retorna.
             ArrayList pbSelected = new ArrayList();
             int rowSelected = dgvPbs.CurrentRow.Index;
 

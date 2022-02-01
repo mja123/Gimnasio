@@ -23,8 +23,9 @@ namespace Gimnasio.Model
         public int createUser(string[] userData)
         {
             try
-            {                
-                if (this.userExist(userData[0]) != 500)
+            {
+                Console.WriteLine(this.userExist(userData[0]));
+                if (this.userExist(userData[0]) == 404)
                 {
                 //Valida si el nombre de usuario solicitado existe.
                     db.Open();
@@ -37,6 +38,7 @@ namespace Gimnasio.Model
                     statusCode = 201;
                 } else
                 {
+                    Console.WriteLine("Here");
                     statusCode = 409;
                 }
                 return statusCode;
@@ -94,11 +96,11 @@ namespace Gimnasio.Model
             {
                 db.Open();
 
-                query = "SELECT username FROM users WHERE '" + name + "' = username";
+                query = "SELECT user_id FROM users WHERE username = '" + name + "'";
 
                 command = new MySqlCommand(query, db);
-
-                if (Convert.ToString(command) != name)
+                
+                if (Convert.ToInt32(command.ExecuteScalar()) == 0)
                 {
                     //Si el usuario no existe, devuelve 404.
                     statusCode = 404;
