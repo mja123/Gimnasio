@@ -8,6 +8,7 @@ namespace Gimnasio.Presenter
 {
     interface ILog
     {
+        //Canal de comunicación entre Presenter y View.
         string[] dataUser();
         void createdUser(int result);
 

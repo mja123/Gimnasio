@@ -16,18 +16,20 @@ namespace Gimnasio.Model
 
         public TurnsModel()
         {
-            db = ConfigDB.MySql;
-            
+            //Se inicializa la variable bd con la conexión de la base de datos.
+            db = ConfigDB.MySql;            
         }
 
         public int createTurn(string hour, string day, int userId)
         {
+            //Crea el turno
             try
             {  
                 if (!this.turnExist(hour, day, userId))
                 {
+                    //Valida si el turno existe, de no existir, lo crea.
                     db.Open();
-                    query = "INSERT INTO gym_uda.turns(turn_day, turn_hour, user_id) VALUES('" + day + "', '" + hour + "', " + userId + ")";
+                    query = "INSERT INTO gym_uda.turns(day, hour, user_id) VALUES('" + day + "', '" + hour + "', " + userId + ")";
 
                     command = new MySqlCommand(query, db);
                     command.ExecuteNonQuery();
@@ -51,13 +53,15 @@ namespace Gimnasio.Model
         }
         public DataTable getAppoitments(int userId)
         {
+            //Crea una tabla en donde se insertan todos los turnos del usuario.
             DataTable appointments = new DataTable();
             try
             {               
                 db.Open();
 
-                query = "SELECT turn_day, turn_hour FROM turns WHERE (user_id = " + userId + ")";
+                query = "SELECT day, hour FROM turns WHERE (user_id = " + userId + ")";
                 command = new MySqlCommand(query, db);
+
                 MySqlDataReader reader = command.ExecuteReader();
                 appointments.Load(reader);
 
@@ -74,12 +78,14 @@ namespace Gimnasio.Model
        
         public int deleteTurn(string hour, string day, int userId)
         {
+            //Elimina un turno.
             try
             {
                 if (this.turnExist(hour, day, userId))
                 {
+                    //Valida si el turno existe, de ser así, lo elimina.
                     db.Open();
-                    query = "DELETE FROM turns WHERE (turn_day = '" + day + "' AND turn_hour ='" + hour + "' AND user_id = " + userId + ")";
+                    query = "DELETE FROM turns WHERE (day = '" + day + "' AND hour ='" + hour + "' AND user_id = " + userId + ")";
 
                     command = new MySqlCommand(query, db);
                     command.ExecuteNonQuery();
@@ -104,35 +110,33 @@ namespace Gimnasio.Model
         }
         private bool turnExist(string hour, string day, int userId)
         {
+            //Método interno que valida si el turno solicitado existe en la db.
             try
             {
                 int result;                
                 db.Open();
-                query = "SELECT turn_id FROM turns WHERE (turn_day = '" + day + "' AND turn_hour ='" + hour + "' AND user_id = " + userId + ")";
+
+                query = "SELECT turn_id FROM turns WHERE (day = '" + day + "' AND hour ='" + hour + "' AND user_id = " + userId + ")";
                 command = new MySqlCommand(query, db);
 
                 result = Convert.ToInt32(command.ExecuteScalar());
-
-                statusCode = 200;
+                //La petición devuelve el id del turno, de existir (distinto de 0), se retorna verdadero, caso contrario, falso.
+                
                 if (result == 0)
                 {
                     return false;
-
                 }
                 return true;
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message + " turnExist");
-                statusCode = 500;
                 return false;
             }
             finally
             {
-
                 db.Close();
             }
-
         }
     }
 }

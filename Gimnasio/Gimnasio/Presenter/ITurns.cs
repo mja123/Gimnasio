@@ -8,6 +8,7 @@ namespace Gimnasio.Presenter
 {
     interface ITurns
     {
+        //Canal de comunicación entre Presenter y View.
         string appointmentTime();
 
         string appointmentDay();

@@ -14,6 +14,7 @@ namespace Gimnasio.Presenter
 
         public TunsManage(ITurns view, int userId)
         {
+            //Se instancian las varaiables.
             turnsModel = new Model.TurnsModel();
             this.turnView = view;
             this.userId = userId;
@@ -22,12 +23,16 @@ namespace Gimnasio.Presenter
         {
             if (this.validateHour())
             {
+                //Pregunta si se ingresó una hora.
+                //Convierte el día y la hora en un formato apto para la bd.
                 day = convertDay();
                 hour = convertHour();                
                 try
                 {
+                    //Se llama al método del Model que crea el turno.
                     result = turnsModel.createTurn(hour, day, userId);
                     turnView.createdTurn(result);
+
                 } catch (Exception e)
                 {
                     turnView.createdTurn(500);
@@ -37,6 +42,7 @@ namespace Gimnasio.Presenter
 
         public void getAllOfAppointments(int userId)
         {
+            //Llama al método del Model para mostrar todos los turnos del usuario.
             try
             {                
                 turnView.getTurns(turnsModel.getAppoitments(userId));
@@ -48,8 +54,10 @@ namespace Gimnasio.Presenter
         }
         public void deleteAppointment()
         {
+            //Llama al método del Model para eliminar un usuario
             if (this.validateHour())
             {
+                //Valida si se ingresó la fecha y la hora del turno a cancelar.
                 day = convertDay();
                 hour = convertHour();
 
@@ -67,6 +75,7 @@ namespace Gimnasio.Presenter
 
         private bool validateHour()
         {
+            //Valida si se ingresó una hora
             if (turnView.appointmentTime() == "-1")
             {
                 turnView.createdTurn(400);
@@ -76,12 +85,14 @@ namespace Gimnasio.Presenter
         }
         private string convertHour()
         {            
+            //Formatea el horario que ingreso el usuario en uno apto para la bd.
             hour = Convert.ToDateTime(this.turnView.appointmentTime()).ToString("HH:mm");
             return hour;
         }
 
         private string convertDay()
         {
+            //Formatea el día que ingreso el usuario en uno apto para la bd.
             string day,formatedDay;
 
             day = turnView.appointmentDay();

@@ -16,39 +16,45 @@ namespace Gimnasio.Presenter
         private int result;
         public PBsManage(IPB view, int userId)
         {
+            //Inicializa e instancia las variables.
             this.pbView = view;
             this.userId = userId;
             pbModel = new Model.PBsModel();
         }
         public void createPB()
         {
+            //Llama al método de Model de crear PB y responde a la View.
             ArrayList data = pbView.createData();            
             if (data.Count < 3)
             {
-
+                //Valida si se han ingresado los 3 datos necesarios para la creación del PB.
                 pbView.pbCreated(409);
             }
             else {
                 if (!this.pbExist(data))
                 {
+                    //Pregunta si el PB ya existe.
                     if (data[0].Equals("") | data[1].Equals("") | data[2].Equals(""))
                     {
+                        //Valida si enviaron datos vacíos.
                         pbView.pbCreated(404);
                     }
                     else if ((!Utils.MaxCountOfChars.isAllow(data[0].ToString(), 40)) |
                         (!Utils.MaxCountOfChars.isAllow(data[0].ToString(), 10)) |
                         (!Utils.MaxCountOfChars.isAllow(data[0].ToString(), 10)))
                     {
-                        Console.WriteLine("here");
+                        //Valida la cantidad máxima de caracteres.                        
                         pbView.pbCreated(414);
                     }
                     else if (data[1].GetType() != typeof(int) | data[2].GetType() != typeof(int))
                     {
+                        //Valida si el peso y las repeticiones son enteros.
                         pbView.pbCreated(409);
 
                     }
                     else
                     {
+                        //Llama al Model y responde a la View.
                         result = pbModel.newPb(data, userId);
                         pbView.pbCreated(result);
                     }
@@ -62,6 +68,7 @@ namespace Gimnasio.Presenter
 
         public void filterPB()
         {
+            //Filtra un ejercicio.
             string exercise;
 
             exercise = pbView.filterDelete();
@@ -73,11 +80,14 @@ namespace Gimnasio.Presenter
         
         public void deletePB()
         {
+            //Elimina los PBs de un ejercicio.
+
             result = pbModel.deletePb(pbView.filterDelete(), userId);
             pbView.pbDeleted(result);
         }
         public void getAllOfPBs()
         {
+            //Llama al Model para solicitar todos los PBs del usuario y responde a la View.
             try
             {
                 pbView.pbsGet(pbModel.getPBs(userId));
@@ -91,6 +101,7 @@ namespace Gimnasio.Presenter
 
         private bool pbExist(ArrayList pbInfo)
         {
+            //Método interno que valida si el PB existe.
             string excercise = pbInfo[0].ToString();
             int weight = Convert.ToInt32(pbInfo[1]);
             int reps = Convert.ToInt32(pbInfo[2]);

@@ -95,9 +95,14 @@ namespace Gimnasio.View
             // 
             // dgvTunsHistorial
             // 
+            this.dgvTunsHistorial.AllowUserToAddRows = false;
+            this.dgvTunsHistorial.AllowUserToDeleteRows = false;
+            this.dgvTunsHistorial.AllowUserToResizeColumns = false;
+            this.dgvTunsHistorial.AllowUserToResizeRows = false;
             this.dgvTunsHistorial.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTunsHistorial.Location = new System.Drawing.Point(399, 92);
             this.dgvTunsHistorial.Name = "dgvTunsHistorial";
+            this.dgvTunsHistorial.ReadOnly = true;
             this.dgvTunsHistorial.Size = new System.Drawing.Size(243, 344);
             this.dgvTunsHistorial.TabIndex = 6;
             // 

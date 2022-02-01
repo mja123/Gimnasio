@@ -19,6 +19,7 @@ namespace Gimnasio.View
         private Presenter.PBsManage pbManager;       
         public frmPB(string username, int userId)
         {
+            //Se inicializan las variables y se muestran los PB del usuario.
             InitializeComponent();
             pbManager = new Presenter.PBsManage(this, userId);
             pbManager.getAllOfPBs();
@@ -28,12 +29,14 @@ namespace Gimnasio.View
 
         ArrayList IPB.createData()
         {
+            //Crea un ArrayList con los datos necesarios del PB.
             ArrayList pbData = new ArrayList();
 
             pbData.Add(txtExercise.Text);
             txtExercise.Text = ""; 
             try
             {
+                //Valida si el texto ingresado es un entero y si no está vacío.
                 pbData.Add(Convert.ToInt32(txtWeight.Text));
                 txtWeight.Text = "";
 
@@ -51,6 +54,7 @@ namespace Gimnasio.View
         }
         void IPB.pbCreated(int result)
         {
+            //Responde al usuario según cómo se llevó a cabo la creación del PB.
             switch (result)
             {
                 case 201:
@@ -75,12 +79,19 @@ namespace Gimnasio.View
         }
         string IPB.filterDelete()
         {
+            //Obtiene el ejercicio que se desea filtrar.
             string execise = txtFilter.Text;
             txtFilter.Text = "";
             return execise;
         }
+        void IPB.pbsGet(DataTable pbs)
+        {
+            //Muestra los PBs del usuario.
+            dgvPbs.DataSource = pbs;
+        }
         void IPB.pbGet(DataTable pb)
         {
+            //Muestra los PB de un ejercicio en específico.
             if (pb.Rows.Count > 0)
             {
                 dgvPbs.DataSource = pb;
@@ -91,6 +102,7 @@ namespace Gimnasio.View
         }
         void IPB.pbDeleted(int result)
         {
+            //Responde al usuario según cómo se llevó a cabo la eliminación del PB.
             switch (result)
             {
                 case 200:
@@ -105,43 +117,40 @@ namespace Gimnasio.View
             }
         }
 
-        void IPB.pbsGet(DataTable pbs)
-        {
-            dgvPbs.DataSource = pbs;
-        }
-
         private void btnSubmit_Click(object sender, EventArgs e)
         {
+            //Llama al método del Presenter que crea el PB.
             pbManager.createPB();
         }
 
         private void btnFilter_Click(object sender, EventArgs e)
         {
+            //Llama al método del Presenter que filtra el PB.
             pbManager.filterPB();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-
+            //Prgunta si desea eliminar el PB.
             DialogResult confirm = MessageBox.Show("Se eliminará un PB", "Confirmar", MessageBoxButtons.YesNo);
 
             if (confirm == DialogResult.Yes)
             {
                 pbManager.deletePB();
-            }
-            
+            }           
+        }
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            //Actualiza la tabla.
+            pbManager.getAllOfPBs();
         }
 
         private void btnGoBack_Click(object sender, EventArgs e)
         {
+            //Se pasa el control a Home.
             View.frmHome home = new frmHome(username, userId);
             this.Hide();
             home.Show();
-        }
-
-        private void btnRefresh_Click(object sender, EventArgs e)
-        {
-            pbManager.getAllOfPBs();
         }
     }
 }

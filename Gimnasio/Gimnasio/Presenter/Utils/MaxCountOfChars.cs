@@ -10,6 +10,7 @@ namespace Gimnasio.Presenter.Utils
     {
         public static bool isAllow(string data, int maxCountOfChars)
         {
+            //Valida si el string ingresado supera una cierta cantidad de caracteres.
             if (data.Length < maxCountOfChars)
             {
                 return true;
@@ -18,7 +19,6 @@ namespace Gimnasio.Presenter.Utils
             {
                 return false;
             }
-        }
-        
+        }        
     }
 }

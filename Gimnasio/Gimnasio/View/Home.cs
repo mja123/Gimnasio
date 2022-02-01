@@ -19,15 +19,16 @@ namespace Gimnasio.View
         private int userId;
         public frmHome(string username, int userId)
         {
+            //Se inicializan las variables y se concatena el nombre del usuario en el label de bienvenida.
             InitializeComponent();
             this.username = username;
             this.userId = userId;
             lblWelcome.Text = "Bienvenido/a " + username;
-
         }
 
         private void btnTurns_Click(object sender, EventArgs e)
         {
+            //Se transfiere el control a Turns
             turns = new frmTurns(username, userId);
             this.Hide();
             turns.Show();
@@ -35,6 +36,7 @@ namespace Gimnasio.View
 
         private void btnPB_Click(object sender, EventArgs e)
         {
+            //Se transfiere el control a PB
             pb = new frmPB(username, userId);
             this.Hide();
             pb.Show();
