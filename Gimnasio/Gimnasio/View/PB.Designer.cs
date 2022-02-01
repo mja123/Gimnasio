@@ -44,6 +44,7 @@ namespace Gimnasio.View
             this.btnFilter = new System.Windows.Forms.Button();
             this.btnGoBack = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
+            this.btnDeleteOneRow = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPbs)).BeginInit();
             this.gpbPBAdd.SuspendLayout();
             this.gpbPBFilter.SuspendLayout();
@@ -59,7 +60,8 @@ namespace Gimnasio.View
             this.dgvPbs.Location = new System.Drawing.Point(112, 24);
             this.dgvPbs.Name = "dgvPbs";
             this.dgvPbs.ReadOnly = true;
-            this.dgvPbs.Size = new System.Drawing.Size(368, 150);
+            this.dgvPbs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvPbs.Size = new System.Drawing.Size(343, 150);
             this.dgvPbs.TabIndex = 0;
             // 
             // lblWeight
@@ -151,11 +153,11 @@ namespace Gimnasio.View
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(314, 15);
+            this.btnDelete.Location = new System.Drawing.Point(312, 15);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.Size = new System.Drawing.Size(102, 23);
             this.btnDelete.TabIndex = 9;
-            this.btnDelete.Text = "Eliminar";
+            this.btnDelete.Text = "Eliminar ejercicio";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
@@ -188,7 +190,7 @@ namespace Gimnasio.View
             // 
             // btnRefresh
             // 
-            this.btnRefresh.Location = new System.Drawing.Point(263, 190);
+            this.btnRefresh.Location = new System.Drawing.Point(172, 189);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(75, 23);
             this.btnRefresh.TabIndex = 11;
@@ -196,12 +198,23 @@ namespace Gimnasio.View
             this.btnRefresh.UseVisualStyleBackColor = true;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
+            // btnDeleteOneRow
+            // 
+            this.btnDeleteOneRow.Location = new System.Drawing.Point(328, 189);
+            this.btnDeleteOneRow.Name = "btnDeleteOneRow";
+            this.btnDeleteOneRow.Size = new System.Drawing.Size(102, 23);
+            this.btnDeleteOneRow.TabIndex = 12;
+            this.btnDeleteOneRow.Text = "Eliminar una fila";
+            this.btnDeleteOneRow.UseVisualStyleBackColor = true;
+            this.btnDeleteOneRow.Click += new System.EventHandler(this.btnDeleteOneRow_Click);
+            // 
             // frmPB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.ClientSize = new System.Drawing.Size(596, 464);
+            this.Controls.Add(this.btnDeleteOneRow);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.btnGoBack);
             this.Controls.Add(this.gpbPBFilter);
@@ -235,5 +248,6 @@ namespace Gimnasio.View
         private System.Windows.Forms.Button btnFilter;
         private System.Windows.Forms.Button btnGoBack;
         private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.Button btnDeleteOneRow;
     }
 }

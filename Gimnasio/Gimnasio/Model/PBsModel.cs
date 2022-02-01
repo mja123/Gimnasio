@@ -105,7 +105,7 @@ namespace Gimnasio.Model
             }
         }
 
-        public int deletePb(string exercise, int userId)
+        public int deletePbExercise(string exercise, int userId)
         {
             //Se eliminan los PBs de un ejercicio.
             try
@@ -124,6 +124,33 @@ namespace Gimnasio.Model
 
                 }
                 statusCode = 404;
+                return statusCode;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                statusCode = 500;
+                return statusCode;
+            }
+            finally
+            {
+                db.Close();
+            }
+        }
+
+        public int deletePb(ArrayList pbData, int userId)
+        {
+            //Elimina un pb en específico
+            try
+            {
+                db.Open();
+
+                query = "DELETE FROM pbs WHERE (exercise = '" + pbData[0] + "' AND weight = " + pbData[1] + " AND reps = " + pbData[2] + " AND user_id = " + userId + ")";
+                command = new MySqlCommand(query, db);
+                command.ExecuteNonQuery();
+
+                statusCode = 200;
+
                 return statusCode;
             }
             catch (Exception e)

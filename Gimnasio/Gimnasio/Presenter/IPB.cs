@@ -14,7 +14,9 @@ namespace Gimnasio.Presenter
         ArrayList createData();
         void pbCreated(int result);
         string filterDelete();
+        void pbsDeleted(int result);
         void pbDeleted(int result);
+        ArrayList pbDataToDelete();
         void pbsGet(DataTable pbs);
         void pbGet(DataTable pb);
     }

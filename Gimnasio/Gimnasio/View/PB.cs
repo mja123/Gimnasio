@@ -87,7 +87,7 @@ namespace Gimnasio.View
         void IPB.pbsGet(DataTable pbs)
         {
             //Muestra los PBs del usuario.
-            dgvPbs.DataSource = pbs;
+            dgvPbs.DataSource = pbs;          
         }
         void IPB.pbGet(DataTable pb)
         {
@@ -100,7 +100,7 @@ namespace Gimnasio.View
                 MessageBox.Show("PB no encontrado.", "Filtrar PB", MessageBoxButtons.OKCancel);
             }
         }
-        void IPB.pbDeleted(int result)
+        void IPB.pbsDeleted(int result)
         {
             //Responde al usuario según cómo se llevó a cabo la eliminación del PB.
             switch (result)
@@ -117,6 +117,30 @@ namespace Gimnasio.View
             }
         }
 
+        void IPB.pbDeleted(int result)
+        {
+            if (result == 200)
+            {
+                dgvPbs.Rows.Remove(dgvPbs.CurrentRow);
+            } else
+            {
+                MessageBox.Show("Errro de servidor", "Eliminar PB", MessageBoxButtons.OKCancel);
+            }           
+        }
+        ArrayList IPB.pbDataToDelete()
+        {
+            ArrayList pbSelected = new ArrayList();
+            int rowSelected = dgvPbs.CurrentRow.Index;
+
+            for (int i = 0; i < dgvPbs.Rows[rowSelected].Cells.Count; i++)
+            {               
+                pbSelected.Add(dgvPbs.Rows[rowSelected].Cells[i].Value);
+            }
+
+            return pbSelected;
+            
+        }
+
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             //Llama al método del Presenter que crea el PB.
@@ -131,12 +155,12 @@ namespace Gimnasio.View
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            //Prgunta si desea eliminar el PB.
-            DialogResult confirm = MessageBox.Show("Se eliminará un PB", "Confirmar", MessageBoxButtons.YesNo);
+            //Prgunta si desea eliminar el ejercicio.
+            DialogResult confirm = MessageBox.Show("Se eliminaran todos los PBs del ejercicio", "Confirmar", MessageBoxButtons.YesNo);
 
             if (confirm == DialogResult.Yes)
             {
-                pbManager.deletePB();
+                pbManager.deletePBExercise();
             }           
         }
         private void btnRefresh_Click(object sender, EventArgs e)
@@ -151,6 +175,18 @@ namespace Gimnasio.View
             View.frmHome home = new frmHome(username, userId);
             this.Hide();
             home.Show();
+        }
+
+        private void btnDeleteOneRow_Click(object sender, EventArgs e)
+        {
+            //Prgunta si desea eliminar el PB.
+            DialogResult confirm = MessageBox.Show("Se eliminará un PB", "Confirmar", MessageBoxButtons.YesNo);
+
+            if (confirm == DialogResult.Yes)
+            {
+                pbManager.deletePb();
+            }
+             
         }
     }
 }

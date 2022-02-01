@@ -40,8 +40,8 @@ namespace Gimnasio.Presenter
                         pbView.pbCreated(404);
                     }
                     else if ((!Utils.MaxCountOfChars.isAllow(data[0].ToString(), 40)) |
-                        (!Utils.MaxCountOfChars.isAllow(data[0].ToString(), 10)) |
-                        (!Utils.MaxCountOfChars.isAllow(data[0].ToString(), 10)))
+                        (!Utils.MaxCountOfChars.isAllow(data[1].ToString(), 10)) |
+                        (!Utils.MaxCountOfChars.isAllow(data[2].ToString(), 10)))
                     {
                         //Valida la cantidad máxima de caracteres.                        
                         pbView.pbCreated(414);
@@ -78,12 +78,12 @@ namespace Gimnasio.Presenter
 
         }
         
-        public void deletePB()
+        public void deletePBExercise()
         {
             //Elimina los PBs de un ejercicio.
 
-            result = pbModel.deletePb(pbView.filterDelete(), userId);
-            pbView.pbDeleted(result);
+            result = pbModel.deletePbExercise(pbView.filterDelete(), userId);
+            pbView.pbsDeleted(result);
         }
         public void getAllOfPBs()
         {
@@ -97,6 +97,16 @@ namespace Gimnasio.Presenter
             {
                 Console.WriteLine(e.Message + " getAllOfAppointments");
             }
+        }
+
+        public void deletePb()
+        {
+            //Llena pbData con la información de la interfaz y llama al método del modelo.
+            ArrayList pbData = new ArrayList();
+
+            pbData = pbView.pbDataToDelete();
+
+            pbView.pbDeleted(pbModel.deletePb(pbData, userId));
         }
 
         private bool pbExist(ArrayList pbInfo)
