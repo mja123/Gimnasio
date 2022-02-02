@@ -106,7 +106,15 @@ namespace Gimnasio.Presenter
 
             pbData = pbView.pbDataToDelete();
 
-            pbView.pbDeleted(pbModel.deletePb(pbData, userId));
+            //Valida si el array está vacío, es decir, si no hay filas disponibles en la tabla.
+            if (pbData.Count > 0)
+            {
+                pbView.pbDeleted(pbModel.deletePb(pbData, userId));
+            } else
+            {
+                pbView.pbDeleted(400);
+            }
+                
         }
 
         private bool pbExist(ArrayList pbInfo)

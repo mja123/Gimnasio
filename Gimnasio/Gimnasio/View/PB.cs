@@ -106,40 +106,46 @@ namespace Gimnasio.View
             switch (result)
             {
                 case 200:
-                    MessageBox.Show("PB eliminado correctamente!", "Eliminar PB", MessageBoxButtons.OKCancel);
+                    MessageBox.Show("Ejercicio eliminado correctamente!", "Eliminar ejercicio", MessageBoxButtons.OKCancel);
                     break;
                 case 404:
-                    MessageBox.Show("PB no encontrado.", "Eliminar PB", MessageBoxButtons.OKCancel);
+                    MessageBox.Show("Ejercicio no encontrado.", "Eliminar ejercicio", MessageBoxButtons.OKCancel);
                     break;
                 default:
-                    MessageBox.Show("Errro de servidor", "Eliminar PB", MessageBoxButtons.OKCancel);
+                    MessageBox.Show("Errro de servidor", "Eliminar ejercicio", MessageBoxButtons.OKCancel);
                     break;
             }
         }
 
         void IPB.pbDeleted(int result)
         {
-            if (result == 200)
-            {
-                dgvPbs.Rows.Remove(dgvPbs.CurrentRow);
-            } else
-            {
-                MessageBox.Show("Errro de servidor", "Eliminar PB", MessageBoxButtons.OKCancel);
-            }           
+            switch(result) {
+                case 200:
+                    dgvPbs.Rows.Remove(dgvPbs.CurrentRow);
+                    break;
+                case 400:
+                    MessageBox.Show("No hay filas disponibles!", "Eliminar PB", MessageBoxButtons.OKCancel);
+                    break;
+                default:
+                    MessageBox.Show("Errro de servidor", "Eliminar PB", MessageBoxButtons.OKCancel);
+                    break;
+            }
         }
         ArrayList IPB.pbDataToDelete()
         {
             //Selecciona los datos de la fila marcada y llena un ArrayList que luego retorna.
             ArrayList pbSelected = new ArrayList();
-            int rowSelected = dgvPbs.CurrentRow.Index;
+            //Valida si existen filas en la tabla, de no haber, retorna el ArrayList vacío.
+            if (dgvPbs.Rows.Count > 0)
+            {
+                int rowSelected = dgvPbs.CurrentRow.Index;
 
-            for (int i = 0; i < dgvPbs.Rows[rowSelected].Cells.Count; i++)
-            {               
-                pbSelected.Add(dgvPbs.Rows[rowSelected].Cells[i].Value);
+                for (int i = 0; i < dgvPbs.Rows[rowSelected].Cells.Count; i++)
+                {
+                    pbSelected.Add(dgvPbs.Rows[rowSelected].Cells[i].Value);
+                }                
             }
-
-            return pbSelected;
-            
+            return pbSelected;        
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
